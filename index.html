@@ -2,8 +2,9 @@
 <html>
   
 <head>
-    <title>Bulma Box</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <title>Bulma Box</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
   	<link rel="stylesheet" type="text/css" href="css/bulma.min.css">
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   	<link rel="stylesheet" href="css/main.css">
@@ -21,22 +22,22 @@
 
         <div id="buttons">
         	<ul>
-		    <button class="btn info" id="boundary">Cantiliver(fixed at one end)</button>
+		    <button class="btn info" id="boundary1">Cantiliver(fixed at one end)</button>
 		    	<li><button class="btn info">Point Load</button></li>
 		    	<li><button class="btn info">UDL</button></li>
 		    </ul>
 		    <ul>
-            	<button class="btn info" id="boundary" >Fixed Beam</button>
+            	<button class="btn info" id="boundary2" >Fixed Beam</button>
   				<li><button class="btn info">Point Load</button></li>
 			    <li><button class="btn info">UDL</button></li>
   			</ul>
 			<ul>
-            	<button class="btn info"id="boundary" id="boundary">One side fixed one side SS</button>
+            	<button class="btn info"id="boundary3" id="boundary">One side fixed one side SS</button>
   				<li><button class="btn info">Point Load</button></li>
 			    <li><button class="btn info">UDL</button></li>
   			</ul>
   			<ul>
-            	<button class="btn info" id="boundary">Two side SS</button>
+            	<button class="btn info" id="boundary4">Two side SS</button>
   				<li><button class="btn info">Point Load</button></li>
 			    <li><button class="btn info">UDL</button></li>
   			</ul>
@@ -93,11 +94,45 @@
         <div class="first-vl">
  
        	<p id="point">Point Load</p>
+         <p id="demo">
+          <svg id="rect" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" >
+
+    <rect x="10" y="10" height="20" width="210" onclick="rect()"
+         style="stroke:black; fill: none">
+
+        <animateTransform
+            attributeName="transform"
+            begin="0s"
+            dur="20s"
+            type="rotate"
+            from="0"
+            to="5"
+            repeatCount="none"
+        />
+    </rect>
+   </svg> 
         </div>
         <div class="second-vl">
         	<p id="uniform">Uniformly Distributed Load</p>
         </div>
     </div>
+
+   <script>
+      document.getElementById("boundary1").addEventListener("click", rect);
+
+      function rect() {
+      document.getElementById("demo").innerHTML = alert('Hello');
+      }
+      
+      // const element = document.getElementById("boundary1");
+      // element.addEventListener("click", myFunction);
+
+      // function myFunction() {
+      // document.getElementById("demo").innerHTML = ;
+      // }
+</script>
+
 </body>
   
 </html>
