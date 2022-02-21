@@ -1,0 +1,79 @@
+#border {
+    width: 80%;
+    height: 600px;
+    border: 8px solid green;
+    padding: 50px;
+    margin: 20px;
+    margin-left: 130px;
+}
+
+/*.buttons{
+    margin-top: 10px;
+    margin-left: 500px;
+}
+*/
+.btn {
+    border: none;
+    background-color: inherit;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn:hover {
+    background: #eee;
+}
+
+.info {
+    color: dodgerblue;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+}
+
+#boundary {
+    margin-left: -30px;
+}
+
+.dropdown-boundary{
+    margin-left: -10px;
+    /*background-color: dodgerblue;*/
+}
+
+.dropdown-load{
+    margin-left: -160px;
+    margin-top: 80px;
+    /*background-color: dodgerblue;*/
+}
+
+.first-vl {
+    border-left: 6px solid green;
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    margin-left: -300px;
+    top: 20px;
+}
+
+.second-vl {
+    border-left: 6px solid green;
+    height: 500px;
+    position: absolute;
+    left: 50%;
+    margin-left: 120px;
+    top: 70px;
+}
+        
+#point {
+    margin-left: 80px;
+    color: dodgerblue;
+    margin-top: 60px;
+}
+
+#uniform {
+    margin-left: 80px;
+    color: dodgerblue;
+    margin-top: 15  px;
+}

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+    <title>Bulma Box</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" type="text/css" href="css/bulma.min.css">
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  	<link rel="stylesheet" href="css/main.css">
+    <!-- custom css -->
+		
+</head>
+  
+<body>
+	<!-- <div class="buttons">
+  			<button class="button is-info">Play</button>
+  			<button class="button is-info">Pause</button>
+  			<button class="button is-info">Restart</button>
+		</div> -->
+    <div id="border">
+
+        <div id="buttons">
+        	<ul>
+		    <button class="btn info" id="boundary">Cantiliver(fixed at one end)</button>
+		    	<li><button class="btn info">Point Load</button></li>
+		    	<li><button class="btn info">UDL</button></li>
+		    </ul>
+		    <ul>
+            	<button class="btn info" id="boundary" >Fixed Beam</button>
+  				<li><button class="btn info">Point Load</button></li>
+			    <li><button class="btn info">UDL</button></li>
+  			</ul>
+			<ul>
+            	<button class="btn info"id="boundary" id="boundary">One side fixed one side SS</button>
+  				<li><button class="btn info">Point Load</button></li>
+			    <li><button class="btn info">UDL</button></li>
+  			</ul>
+  			<ul>
+            	<button class="btn info" id="boundary">Two side SS</button>
+  				<li><button class="btn info">Point Load</button></li>
+			    <li><button class="btn info">UDL</button></li>
+  			</ul>
+        </div>
+<!--         <div class="dropdown bgcolor">
+  			<div class = "dropdown">
+               <div class = "dropdown-trigger dropdown-boundary">
+                  <button class = "button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>Boundary Type</span>
+                  <span class = "icon is-small"><i class = "fa fa-angle-down" aria-hidden="true"></i>	</span>
+                  </button>
+               </div>
+               <div class = "dropdown-menu is-active" id="dropdown-menu" role="menu">
+                  <div class = "dropdown-content">
+                     <a href="#" class = "dropdown-item">Cantiliver</a>
+                     <a class = "dropdown-item">Fixed Beam</a>
+                     <a href="#" class = "dropdown-item">One side fixed one side SS</a>
+                     <a href="#" class = "dropdown-item">Two side SS</a>
+                  </div>
+               </div>
+               <div class = "dropdown">
+               <div class = "dropdown-trigger dropdown-load">
+                  <button class = "button" aria-haspopup="true" aria-controls="dropdown-menu">
+                  <span>Load Type</span>
+                  <span class = "icon is-small"><i class = "fa fa-angle-down" aria-hidden="true"></i></span>
+                  </button>
+               </div>
+               <div class = "dropdown-menu is-active" id="dropdown-menu" role="menu">
+                  <div class = "dropdown-content">
+                  	<a href="#" class = "dropdown-item">Point Load</a>
+                     <a class = "dropdown-item">Uniformly Distributed Load</a>
+                  </div>
+               </div>
+            </div>
+ -->            <script>
+               //DOMContentLoaded - it fires when initial HTML document has been completely loaded
+               document.addEventListener('DOMContentLoaded', function () {
+               // querySelector - it returns the element within the document that matches the specified selector
+               var dropdown = document.querySelector('.dropdown');
+                 
+               //addEventListener - attaches an event handler to the specified element.
+               dropdown.addEventListener('click', function(event) {
+                 
+               //event.stopPropagation() - it stops the bubbling of an event to parent elements, by preventing parent event handlers from being executed
+               event.stopPropagation();
+                
+               //classList.toggle - it toggles between adding and removing a class name from an element
+               dropdown.classList.toggle('is-active');
+               });
+               });        
+            </script>
+         </div>
+</div>
+        <div class="first-vl">
+ 
+       	<p id="point">Point Load</p>
+        </div>
+        <div class="second-vl">
+        	<p id="uniform">Uniformly Distributed Load</p>
+        </div>
+    </div>
+</body>
+  
+</html>
