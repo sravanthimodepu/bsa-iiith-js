@@ -1,138 +1,78 @@
 <!DOCTYPE html>
 <html>
-  
-<head>
-   <title>Bulma Box</title>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta name="viewport" content="width=device-width, initial-scale=1">
-  	<link rel="stylesheet" type="text/css" href="css/bulma.min.css">
-  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  	<link rel="stylesheet" href="css/main.css">
-    <!-- custom css -->
-		
-</head>
-  
-<body>
-	<!-- <div class="buttons">
-  			<button class="button is-info">Play</button>
-  			<button class="button is-info">Pause</button>
-  			<button class="button is-info">Restart</button>
-		</div> -->
-    <div id="border">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.6-b/css/style.min.css">
+		<link rel="stylesheet" href="css/main.css">
+	</head>
 
-        <div id="buttons">
-        	<ul>
-		    <button class="btn info" id="boundary1">Cantiliver(fixed at one end)</button>
-		    	<li><button class="btn info">Point Load</button></li>
-		    	<li><button class="btn info">UDL</button></li>
-		    </ul>
-		    <ul>
-            	<button class="btn info" id="boundary2" >Fixed Beam</button>
-  				<li><button class="btn info">Point Load</button></li>
-			    <li><button class="btn info">UDL</button></li>
-  			</ul>
-			<ul>
-            	<button class="btn info"id="boundary3" id="boundary">One side fixed one side SS</button>
-  				<li><button class="btn info">Point Load</button></li>
-			    <li><button class="btn info">UDL</button></li>
-  			</ul>
-  			<ul>
-            	<button class="btn info" id="boundary4">Two side SS</button>
-  				<li><button class="btn info">Point Load</button></li>
-			    <li><button class="btn info">UDL</button></li>
-  			</ul>
-        </div>
-<!--         <div class="dropdown bgcolor">
-  			<div class = "dropdown">
-               <div class = "dropdown-trigger dropdown-boundary">
-                  <button class = "button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Boundary Type</span>
-                  <span class = "icon is-small"><i class = "fa fa-angle-down" aria-hidden="true"></i>	</span>
-                  </button>
-               </div>
-               <div class = "dropdown-menu is-active" id="dropdown-menu" role="menu">
-                  <div class = "dropdown-content">
-                     <a href="#" class = "dropdown-item">Cantiliver</a>
-                     <a class = "dropdown-item">Fixed Beam</a>
-                     <a href="#" class = "dropdown-item">One side fixed one side SS</a>
-                     <a href="#" class = "dropdown-item">Two side SS</a>
-                  </div>
-               </div>
-               <div class = "dropdown">
-               <div class = "dropdown-trigger dropdown-load">
-                  <button class = "button" aria-haspopup="true" aria-controls="dropdown-menu">
-                  <span>Load Type</span>
-                  <span class = "icon is-small"><i class = "fa fa-angle-down" aria-hidden="true"></i></span>
-                  </button>
-               </div>
-               <div class = "dropdown-menu is-active" id="dropdown-menu" role="menu">
-                  <div class = "dropdown-content">
-                  	<a href="#" class = "dropdown-item">Point Load</a>
-                     <a class = "dropdown-item">Uniformly Distributed Load</a>
-                  </div>
-               </div>
-            </div>
- -->            <script>
-               //DOMContentLoaded - it fires when initial HTML document has been completely loaded
-               document.addEventListener('DOMContentLoaded', function () {
-               // querySelector - it returns the element within the document that matches the specified selector
-               var dropdown = document.querySelector('.dropdown');
-                 
-               //addEventListener - attaches an event handler to the specified element.
-               dropdown.addEventListener('click', function(event) {
-                 
-               //event.stopPropagation() - it stops the bubbling of an event to parent elements, by preventing parent event handlers from being executed
-               event.stopPropagation();
-                
-               //classList.toggle - it toggles between adding and removing a class name from an element
-               dropdown.classList.toggle('is-active');
-               });
-               });        
-            </script>
-         </div>
-</div>
-        <div class="first-vl">
- 
-       	<p id="point">Point Load</p>
-         <p id="demo">
-          <svg id="rect" xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink" >
+	<body class="page">
+		<div class="columns is-centered is-flex">
+			<div class="column mt-2 is-4-desktop is-10-tablet is-10-mobile has-text-centered">
+				<div class="v-instruction-container">
+					<div class="v-instruction-title">Instructions</div>
+					<div id="procedure-message" class="v-instruction-text">
+					</div>
+				</div>
+				<div class="column center-content">
+					<div class="v-select">
+						<select id="menu">
+							<option value="PL">Point Load</option>
+							<option value="UDL">Uniform Distributed Load</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
 
-    <rect x="10" y="10" height="20" width="210" onclick="rect()"
-         style="stroke:black; fill: none">
+		<div class="columns is-centered is-variable is-flex is-flex-wrap-wrap workspace">
+			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
+				<div class="v-datalist-container">
+					<div class="v-datalist-title"> Boundary Type</div>
+                    <label class="v-radio v-datalist-row"><input type="radio" class="v-radio-input" name="answer" style="text-align: left;">Cantilever</label>
+                    <label class="v-radio v-datalist-row"><input type="radio" class="v-radio-input" name="answer">Fixed Beam</label>
+                    <label class="v-radio v-datalist-row"><input type="radio" class="v-radio-input" name="answer">One side fixed One side SS</label>
+                    <label class="v-radio v-datalist-row"><input type="radio" class="v-radio-input" name="answer">Two side SS</label>
+				</div>
+			</div>
 
-        <animateTransform
-            attributeName="transform"
-            begin="0s"
-            dur="20s"
-            type="rotate"
-            from="0"
-            to="5"
-            repeatCount="none"
-        />
-    </rect>
-   </svg> 
-        </div>
-        <div class="second-vl">
-        	<p id="uniform">Uniformly Distributed Load</p>
-        </div>
-    </div>
+			<div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile observations">
+				<div class="v-datalist-container">
+					<div class="v-datalist-title">Graph</div>
+					<div class="v-datalist-row v-bold" id="output1"></div>
+					<div class="v-datalist-row v-bold" id="output2"></div>
+					<div class="v-datalist-row v-bold" id="output3"></div>
+					<div class="v-datalist-row v-bold" id="output4"></div>
+					<div class="v-datalist-row">
+						<div class="v-table-wrap">
+							<table id="table" class="table is-bordered is-fullwidth">
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
 
-   <script>
-      document.getElementById("boundary1").addEventListener("click", rect);
+			<div class="column has-text-centered is-6-desktop is-10-tablet is-10-mobile simulation">
+				<canvas id="main" class="v-canvas-container"></canvas>
+				<div class="v-datalist-container graph" id='graph'>
+					<div class="v-datalist-title">Graph Observations</div>
+					<div class="plot" id="plot0"></div>
+					<div class="plot" id="plot1"></div>
+					<div class="plot" id="plot2"></div>
+				</div>
+			</div>
+		</div>
 
-      function rect() {
-      document.getElementById("demo").innerHTML = alert('Hello');
-      }
-      
-      // const element = document.getElementById("boundary1");
-      // element.addEventListener("click", myFunction);
+		<div class="columns is-mobile is-centered is-flex">
+			<div class="column has-text-centered">
+				<button id="restart" class="v-button">Restart</button>
+			</div>
+		</div>
 
-      // function myFunction() {
-      // document.getElementById("demo").innerHTML = ;
-      // }
-</script>
-
-</body>
-  
+		<script src="https://unpkg.com/mathjs@9.2.0/lib/browser/math.js"></script>
+		<script src="https://cdn.plot.ly/plotly-1.47.4.min.js"></script>
+		<script src="./js/data.json"></script>
+		<script src="./js/main.js"></script>
+	</body>
 </html>
