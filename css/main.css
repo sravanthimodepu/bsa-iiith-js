@@ -10,7 +10,14 @@
 .v-datalist-container {
 	height: 100%;
 }
+/*.v-radio{
+	justify-content: left;
+}*/
 
+#radio-style{
+	justify-content: left;
+	padding: 0.4em;
+}
 .graph {
 	display: none;
 	min-width: 100%;

@@ -13,13 +13,13 @@
 				<div class="v-instruction-container">
 					<div class="v-instruction-title">Instructions</div>
 					<div id="procedure-message" class="v-instruction-text">
-					</div>
+					</div>					
 				</div>
 				<div class="column center-content">
-					<div class="v-select">
+					<div class="v-select select">
 						<select id="menu">
-							<option value="PL">Point Load</option>
-							<option value="UDL">Uniform Distributed Load</option>
+							<option value="CL">Point Load</option>
+							<option value="FB">Uniformly Ditributed Load</option>
 						</select>
 					</div>
 				</div>
@@ -29,21 +29,40 @@
 		<div class="columns is-centered is-variable is-flex is-flex-wrap-wrap workspace">
 			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
 				<div class="v-datalist-container">
-					<div class="v-datalist-title"> Boundary Type</div>
-                    <label class="v-radio v-datalist-row"><input type="radio" class="v-radio-input" name="answer" style="text-align: left;">Cantilever</label>
-                    <label class="v-radio v-datalist-row"><input type="radio" class="v-radio-input" name="answer">Fixed Beam</label>
-                    <label class="v-radio v-datalist-row"><input type="radio" class="v-radio-input" name="answer">One side fixed One side SS</label>
-                    <label class="v-radio v-datalist-row"><input type="radio" class="v-radio-input" name="answer">Two side SS</label>
+					<div class="v-datalist-title" > Load Type</div>	
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer">Cantilever</label>
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer">Fixed Beam</label>
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" >One side fixed </label>
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer">Two side SS</label>
+                    <div class="columns is-centered is-mobile">
+        						<div class="column is-one-quarter">Length</div>
+        						<div class="column">
+          						<input type="range" class="v-slider-full" />
+        						</div>
+      					</div>
+      					
+      					<div class="columns is-centered is-mobile">
+        						<div class="column is-one-quarter">Breadth</div>
+        						<div class="column">
+          						<input type="range" class="v-slider-full" />
+        						</div>
+
+      					</div>
+      					<div class="columns is-centered is-mobile">
+        						<div class="column is-one-quarter">Depth</div>
+        						<div class="column">
+          						<input type="range" class="v-slider-full" />
+          					</div>
+
+      					</div>
 				</div>
+
 			</div>
 
 			<div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile observations">
 				<div class="v-datalist-container">
-					<div class="v-datalist-title">Graph</div>
-					<div class="v-datalist-row v-bold" id="output1"></div>
-					<div class="v-datalist-row v-bold" id="output2"></div>
-					<div class="v-datalist-row v-bold" id="output3"></div>
-					<div class="v-datalist-row v-bold" id="output4"></div>
+					<div class="v-datalist-title">Observations</div>
+					
 					<div class="v-datalist-row">
 						<div class="v-table-wrap">
 							<table id="table" class="table is-bordered is-fullwidth">
