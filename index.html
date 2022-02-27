@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.6-b/css/style.min.css">
 		<link rel="stylesheet" href="css/main.css">
+		<script src="./js/main.js"></script>
 	</head>
 
 	<body class="page">
@@ -18,10 +19,11 @@
 				<div class="column center-content">
 					<div class="v-select select">
 						<select id="menu">
-							<option value="CL">Point Load</option>
-							<option value="FB">Uniformly Ditributed Load</option>
+							<option value="pointload">Point Load</option>
+							<option value="udl">Uniformly Ditributed Load</option>
 						</select>
 					</div>
+					<p><span class="boundaryType"></span></p>
 				</div>
 			</div>
 		</div>
@@ -30,10 +32,11 @@
 			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
 				<div class="v-datalist-container">
 					<div class="v-datalist-title" > Load Type</div>	
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer">Cantilever</label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer">Fixed Beam</label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" >One side fixed </label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer">Two side SS</label>
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Cantilever" onclick="getOption(); displayRadioValue();">Cantilever</label>
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="FixedBeam">Fixed Beam</label>
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Onesidefixed">One side fixed </label>
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="TwosideSS">Two side SS</label>
+					<div id="result">result : </div>
                     <div class="columns is-centered is-mobile">
         						<div class="column is-one-quarter">Length</div>
         						<div class="column">
@@ -92,6 +95,5 @@
 		<script src="https://unpkg.com/mathjs@9.2.0/lib/browser/math.js"></script>
 		<script src="https://cdn.plot.ly/plotly-1.47.4.min.js"></script>
 		<script src="./js/data.json"></script>
-		<script src="./js/main.js"></script>
 	</body>
 </html>
