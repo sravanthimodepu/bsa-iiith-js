@@ -14,8 +14,9 @@ function displayRadioValue() {
           
             if(ele[i].checked)
                 document.getElementById("result").innerHTML
-                        += ele[i].value;
+                            = ele[i].value;
         }
         
     }
 }
+

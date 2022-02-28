@@ -10,18 +10,25 @@
 .v-datalist-container {
 	height: 100%;
 }
-/*.v-radio{
-	justify-content: left;
-}*/
 
+#result{
+	font-weight: bold;
+		/*justify-content	: left;*/
+}
 
 #border-radius{
-	border-radius: 100px;
+	border-radius: 1px;
 }
 #radio-style{
 	justify-content: left;
 	padding: 0.4em;
+	margin-left: 0.4em;
 }
+
+#slider-left{
+	justify-content: left;
+}
+
 .graph {
 	display: none;
 	min-width: 100%;

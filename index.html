@@ -5,6 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.6-b/css/style.min.css">
 		<link rel="stylesheet" href="css/main.css">
+		<script type="text/javascript" src="js/bulma-slider.min.js"></script>
 		<script src="./js/main.js"></script>
 	</head>
 
@@ -17,10 +18,12 @@
 					</div>					
 				</div>
 				<div class="column center-content">
-					<div class="v-select select">
-						<select id="menu">
-							<option id="border-radius" value="CL">Point Load</option>
-							<option id="" value="FB">Uniformly Ditributed Load</option>
+					<div class="v-select">
+						<select id="menu"> 
+							<option value="CL">Cantilever</option>	
+							<option value="FB">Fixed Beam</option>
+							<option value="OS">One side fixed one side SS</option>	
+							<option value="TS">Two side SS</option>
 						</select>
 					</div>
 					<p><span class="boundaryType"></span></p>
@@ -32,29 +35,39 @@
 			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
 				<div class="v-datalist-container">
 					<div class="v-datalist-title" > Load Type</div>	
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Cantilever" onclick="getOption(); displayRadioValue();">Cantilever</label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="FixedBeam">Fixed Beam</label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Onesidefixed">One side fixed </label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="TwosideSS">Two side SS</label>
-					<div id="result">result : </div>
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Point Load" onclick="getOption(); displayRadioValue();">Point Load</label>
+                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" onclick="getOption(); displayRadioValue();">UDL</label>
+                  <div id="result">Result : </div>
                     <div class="columns is-centered is-mobile">
-        						<div class="column is-one-quarter">Length</div>
-        						<div class="column">
-          						<input type="range" class="v-slider-full" />
+        						<div class="column" id="slider-left">
+          						<!-- <input type="range" class="v-slider" /> -->
+          						<p>Length: <output for="sliderWithValueTooltip">50</output></p>
+          						<input id="sliderWithValueTooltip" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range">
+          						<script>
+              					bulmaSlider.attach();
+          						</script>
         						</div>
       					</div>
       					
       					<div class="columns is-centered is-mobile">
-        						<div class="column is-one-quarter">Breadth</div>
         						<div class="column">
-          						<input type="range" class="v-slider-full" />
+          						<!-- <input type="range" class="v-slider" /> -->
+          						<p>Breadth: <output for="sliderWithValueTooltip">50</output></p>
+          						<input id="sliderWithValueTooltip" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range">
+          						<script>
+              					bulmaSlider.attach();
+          						</script>
         						</div>
 
       					</div>
       					<div class="columns is-centered is-mobile">
-        						<div class="column is-one-quarter">Depth</div>
         						<div class="column">
-          						<input type="range" class="v-slider-full" />
+          						<!-- <input type="range" class="v-slider-full" /> -->
+          						<p>Depth: <output for="sliderWithValueTooltip">50</output></p>
+          						<input id="sliderWithValueTooltip" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range">
+          						<script>
+              					bulmaSlider.attach();
+          						</script>
           					</div>
 
       					</div>
