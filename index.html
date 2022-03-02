@@ -18,7 +18,7 @@
 					</div>					
 				</div>
 				<div class="column center-content">
-					<div class="v-select">
+					<div class="select">
 						<select id="menu"> 
 							<option value="CL">Cantilever</option>	
 							<option value="FB">Fixed Beam</option>
@@ -35,42 +35,30 @@
 			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
 				<div class="v-datalist-container">
 					<div class="v-datalist-title" > Load Type</div>	
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Point Load" onclick="getOption(); displayRadioValue();">Point Load</label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" onclick="getOption(); displayRadioValue();">UDL</label>
-                  <div id="result">Result : </div>
-                    <div class="columns is-centered is-mobile">
-        						<div class="column" id="slider-left">
-          						<!-- <input type="range" class="v-slider" /> -->
-          						<p>Length: <output for="sliderWithValueTooltip">50</output></p>
-          						<input id="sliderWithValueTooltip" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range">
-          						<script>
-              					bulmaSlider.attach();
-          						</script>
-        						</div>
-      					</div>
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Point Load" onclick="getOption(); displayRadioValue();">Point Load</label>
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" onclick="getOption(); displayRadioValue();">UDL</label>
+            <!-- <div id="result">Result : </div> -->
+            	<p class="v-datalist-title">Input Parameters</p>
+            	<div class="columns is-mobile is-pulled-left" align="left">
+        				<div class="column" id="slider-left" >
+          				<p>Length: <output for="sliderWithValueTooltip">50</output></p>
+          				<input id="sliderWithValueTooltip" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range">
+          				<script>
+              		bulmaSlider.attach();
+          				</script>
+          				<p>Breadth: <output for="sliderWithValueTooltip">50</output></p>
+          				<input id="sliderWithValueTooltip" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range">
+          				<script>
+              		bulmaSlider.attach();
+          				</script>
+          				<p>Depth: <output for="sliderWithValueTooltip">50</output></p>
+          				<input id="sliderWithValueTooltip" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range">
+          				<script>
+              		bulmaSlider.attach();
+          				</script>
+        				</div>
+      				</div>
       					
-      					<div class="columns is-centered is-mobile">
-        						<div class="column">
-          						<!-- <input type="range" class="v-slider" /> -->
-          						<p>Breadth: <output for="sliderWithValueTooltip">50</output></p>
-          						<input id="sliderWithValueTooltip" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range">
-          						<script>
-              					bulmaSlider.attach();
-          						</script>
-        						</div>
-
-      					</div>
-      					<div class="columns is-centered is-mobile">
-        						<div class="column">
-          						<!-- <input type="range" class="v-slider-full" /> -->
-          						<p>Depth: <output for="sliderWithValueTooltip">50</output></p>
-          						<input id="sliderWithValueTooltip" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range">
-          						<script>
-              					bulmaSlider.attach();
-          						</script>
-          					</div>
-
-      					</div>
 				</div>
 
 			</div>
@@ -82,14 +70,25 @@
 					<div class="v-datalist-row">
 						<div class="v-table-wrap">
 							<table id="table" class="table is-bordered is-fullwidth">
+								
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="column has-text-centered is-6-desktop is-10-tablet is-10-mobile simulation">
-				<canvas id="main" class="v-canvas-container"></canvas>
+			<div class="column has-text-centered is-6-desktop is-10-tablet is-10-mobile simulation v-canvas-container">
+				<!-- <canvas id="main" class="v-canvas-container"></canvas> -->
+				<!-- <div></div> -->
+				<div id="arrow">
+									<svg version="1.1" id="Capa_1" >
+										<g>
+											<g id="arrow_x5F_down">
+												<path style="fill:#030104;" d="M32,16.016l-5.672-5.664c0,0-3.18,3.18-6.312,6.312V0h-8.023v16.664l-6.32-6.32L0,16.016L16,32 L32,16.016z"/>
+											</g>
+										</g>
+									</svg>
+								</div>
 				<div class="v-datalist-container graph" id='graph'>
 					<div class="v-datalist-title">Graph Observations</div>
 					<div class="plot" id="plot0"></div>

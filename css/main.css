@@ -29,6 +29,19 @@
 	justify-content: left;
 }
 
+#arrow {
+  width: 100px;
+  height: 100px;
+ /* background: red;*/
+  position: relative;
+  animation: mymove 5s forwards;
+}
+@keyframes mymove {
+  from {top: 0px;}
+  to {top: 30px;}
+}
+
+
 .graph {
 	display: none;
 	min-width: 100%;
