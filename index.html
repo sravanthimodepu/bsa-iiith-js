@@ -34,9 +34,9 @@
 		<div class="columns is-centered is-variable is-flex is-flex-wrap-wrap workspace">
 			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
 				<div class="v-datalist-container">
-					<div class="v-datalist-title" > Load Type</div>	
-            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Point Load" onclick="getOption(); displayRadioValue();">Point Load</label>
-            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" onclick="getOption(); displayRadioValue();">UDL</label>
+					<div class="v-datalist-title" id="load"> Load Type</div>	
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Point Load" onclick="myFunction()">Point Load</label>
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" 	onclick="myFunction()">UDL</label>
             <!-- <div id="result">Result : </div> -->
             	<p class="v-datalist-title">Input Parameters</p>
             	<div class="columns is-mobile is-pulled-left" align="left">
@@ -81,14 +81,38 @@
 				<!-- <canvas id="main" class="v-canvas-container"></canvas> -->
 				<!-- <div></div> -->
 				<div id="arrow">
-									<svg version="1.1" id="Capa_1" >
-										<g>
-											<g id="arrow_x5F_down">
-												<path style="fill:#030104;" d="M32,16.016l-5.672-5.664c0,0-3.18,3.18-6.312,6.312V0h-8.023v16.664l-6.32-6.32L0,16.016L16,32 L32,16.016z"/>
-											</g>
-										</g>
-									</svg>
-								</div>
+					<svg version="1.1" id="Capa_1" style="max-width: 100%;" >
+						<path style="fill:#030104;" d="M32,16.016l-5.672-5.664c0,0-3.18,3.18-6.312,6.312V0h-8.023v16.664l-6.32-6.32L0,16.016L16,32 L32,16.016z"/>
+					</svg>
+				</div>
+				<svg width="484" height="168" viewBox="0 0 584 168"  stroke="black" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g id="Cantilever" stroke="black">
+						<g id="Frame">
+							<path id="Vector" d="M583 70.5H23V110.5H583V70.5Z" fill="white" stroke="black"/>
+							<path id="Vector_2" d="M23 162.5V20.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_3" d="M3 50.5L23 29.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_4" d="M2 70.5L22 49.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_5" d="M1 92.5L21 71.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_6" d="M2 110.5L22 89.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_7" d="M1 130.5L21 109.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_8" d="M3 148.5L23 127.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_9" d="M4 167.5L24 146.5" stroke="black" stroke-miterlimit="10"/>
+						</g>
+						<!-- <g id="Arrow">
+						<path id="Vector_10" d="M538 1H548V31H558.5L543 50L527.5 31H538V1Z" stroke="black" stroke-miterlimit="10"/>
+						</g> -->
+					</g>
+				</svg>
+		
+					<!-- <div id="arrow">
+						<svg version="1.1" id="Capa_1" >
+							<g>
+								<g id="arrow_down">
+									<path style="fill:#030104;" d="M32,16.016l-5.672-5.664c0,0-3.18,3.18-6.312,6.312V0h-8.023v16.664l-6.32-6.32L0,16.016L16,32 L32,16.016z"/>
+								</g>
+							</g>
+						</svg>
+					</div> -->
 				<div class="v-datalist-container graph" id='graph'>
 					<div class="v-datalist-title">Graph Observations</div>
 					<div class="plot" id="plot0"></div>

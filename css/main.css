@@ -29,18 +29,27 @@
 	justify-content: left;
 }
 
+svg {
+	max-width: 100%;
+}
+
 #arrow {
+	margin-left: 580px;
+	margin-top: 1px;
   width: 100px;
   height: 100px;
  /* background: red;*/
   position: relative;
-  animation: mymove 5s forwards;
+  animation: mymove 2s forwards;
 }
-@keyframes mymove {
+/*@keyframes mymove {
   from {top: 0px;}
-  to {top: 30px;}
-}
+  to {top: 50px;}
+}*/
 
+g {
+	outline-color: solid 10px black;
+}
 .graph {
 	display: none;
 	min-width: 100%;
