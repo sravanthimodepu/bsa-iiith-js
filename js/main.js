@@ -11,7 +11,7 @@ function myFunction() {
   clearInterval(id);
   id = setInterval(frame, 10);
   function frame() {
-    if (pos == 50) {
+    if (pos == 140) {
       clearInterval(id);
     } else {
       pos++; 
