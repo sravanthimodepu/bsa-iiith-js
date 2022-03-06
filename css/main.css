@@ -10,17 +10,45 @@
 .v-datalist-container {
 	height: 100%;
 }
-/*.v-radio{
-	justify-content: left;
-}*/
 
+#result{
+	font-weight: bold;
+		/*justify-content	: left;*/
+}
 
 #border-radius{
-	border-radius: 100px;
+	border-radius: 1px;
 }
 #radio-style{
 	justify-content: left;
 	padding: 0.4em;
+	margin-left: 0.4em;
+}
+
+#slider-left{
+	justify-content: left;
+}
+
+svg {
+	max-width: 100%;
+}
+
+#arrow {
+	margin-left: 315px;
+	margin-top: 1px;
+  width: 100px;
+  height: 100px;
+ /* background: red;*/
+  position: relative;
+  animation: mymove 2s forwards;
+}
+/*@keyframes mymove {
+  from {top: 0px;}
+  to {top: 50px;}
+}*/
+
+g {
+	outline-color: solid 10px black;
 }
 .graph {
 	display: none;
@@ -56,3 +84,14 @@
 		order: 2;
 	}
 }
+  #triangle1 {
+        width: 1px;
+        height: 1px;
+display: none;
+ opacity: 0;
+     transform: rotateX(170deg);
+    border-left: 0px solid transparent;
+    border-right: 170px solid transparent;
+    border-bottom: 58px solid #000000;
+        margin: 10px 0px 00px;
+      }

@@ -5,9 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.6-b/css/style.min.css">
 		<link rel="stylesheet" href="css/main.css">
+		<script type="text/javascript" src="js/bulma-slider.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+		<script src="./js/main.js"></script>
 	</head>
 
-	<body class="page">
+	<body class="page" onload="setDefaults()">
 		<div class="columns is-centered is-flex">
 			<div class="column mt-2 is-4-desktop is-10-tablet is-10-mobile has-text-centered">
 				<div class="v-instruction-container">
@@ -16,12 +19,15 @@
 					</div>					
 				</div>
 				<div class="column center-content">
-					<div class="v-select select">
-						<select id="menu">
-							<option id="border-radius" value="CL">Point Load</option>
-							<option id="" value="FB">Uniformly Ditributed Load</option>
+					<div class="select">
+						<select id="menu"> 
+							<option value="CL">Cantilever</option>	
+							<option value="FB">Fixed Beam</option>
+							<option value="OS">One side fixed one side SS</option>	
+							<option value="TS">Two side SS</option>
 						</select>
 					</div>
+					<p><span class="boundaryType"></span></p>
 				</div>
 			</div>
 		</div>
@@ -29,32 +35,27 @@
 		<div class="columns is-centered is-variable is-flex is-flex-wrap-wrap workspace">
 			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
 				<div class="v-datalist-container">
-					<div class="v-datalist-title" > Load Type</div>	
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer">Cantilever</label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer">Fixed Beam</label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" >One side fixed </label>
-                    <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer">Two side SS</label>
-                    <div class="columns is-centered is-mobile">
-        						<div class="column is-one-quarter">Length</div>
-        						<div class="column">
-          						<input type="range" class="v-slider-full" />
-        						</div>
-      					</div>
+					<div class="v-datalist-title" id="load"> Load Type</div>	
+            <label class="v-radio v-datalist-row" ><input type="radio" class="v-radio-input" name="answer" value="Point Load" onclick="myFunction()" id="radio-style_point_load" >Point Load</label>
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" 	onclick="myFunction()">UDL</label>
+            <!-- <div id="result">Result : </div> -->
+            	<p class="v-datalist-title">Input Parameters</p>
+            	<div class="columns is-mobile is-pulled-left" align="left">
+        				<div class="column" id="slider-left" >
+          				<p>Length: <output for="sliderWithValueTooltipLength">50</output></p>
+          				<input id="sliderWithValueTooltipLength" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range" onchange="adjustRectLength()">
+          				<script>
+              		bulmaSlider.attach();
+          				</script>
+          				<p>Breadth: <output for="sliderWithValueTooltipBreadth">50</output></p>
+          				<input id="sliderWithValueTooltipBreadth" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range" onchange="adjustRectBreadth()">
+          				<script>
+              		bulmaSlider.attach();
+          				</script>
+          				
+        				</div>
+      				</div>
       					
-      					<div class="columns is-centered is-mobile">
-        						<div class="column is-one-quarter">Breadth</div>
-        						<div class="column">
-          						<input type="range" class="v-slider-full" />
-        						</div>
-
-      					</div>
-      					<div class="columns is-centered is-mobile">
-        						<div class="column is-one-quarter">Depth</div>
-        						<div class="column">
-          						<input type="range" class="v-slider-full" />
-          					</div>
-
-      					</div>
 				</div>
 
 			</div>
@@ -62,21 +63,61 @@
 			<div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile observations">
 				<div class="v-datalist-container">
 					<div class="v-datalist-title">Observations</div>
-					
-					<div class="v-datalist-row">
-						<div class="v-table-wrap">
-							<table id="table" class="table is-bordered is-fullwidth">
-							</table>
-						</div>
-					</div>
+	<div class="" style="width: 100%;"><p style="    float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">SFD</p> </div>
+					<svg id="observations_point_load_sfd" width="0" height="50" viewBox="0 0 584 168"  stroke="black" fill="none" xmlns="http://www.w3.org/2000/svg">
+				
+						<g  stroke="black">
+						 <rect  x="25" y="65" width="520" height="70" stroke="black" fill="white"></rect> 
+						</g>
+					</svg>
+<div class="" style="width: 100%;"><p style="    float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">DM</p> </div>
+					<div id="triangle1" style="height=50"></div>
 				</div>
 			</div>
 
-			<div class="column has-text-centered is-6-desktop is-10-tablet is-10-mobile simulation">
-				<canvas id="main" class="v-canvas-container"></canvas>
-				<div class="v-datalist-container graph" id='graph'>
+			<div class="column has-text-centered is-6-desktop is-10-tablet is-10-mobile simulation v-canvas-container">
+				<!-- <canvas id="main" class="v-canvas-container"></canvas> -->
+				<!-- <div></div> -->
+				<div id="arrow">
+					<svg version="1.1" id="Capa_1" style="max-width: 100%;" >
+						<path style="fill:#030104;" d="M32,16.016l-5.672-5.664c0,0-3.18,3.18-6.312,6.312V0h-8.023v16.664l-6.32-6.32L0,16.016L16,32 L32,16.016z"/>
+					</svg>
+				</div>
+				<svg width="484" height="168" viewBox="0 0 584 168"  stroke="black" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g id="Cantilever" stroke="black">
+						<g id="Frame">
+						<!-- Rect Max width 550 and setting it to half same as slider.-->
+						<!-- Rect height = 100 means y should be at 90, default 65 and height =1 means y= 40-->
+						 <rect id="rectangle" x="25" y="65" width="275" height="50" stroke="black" fill="white"></rect> 
+							<!-- <path id="Vector" d="M583 70.5H23V110.5H583V70.5Z" fill="white" stroke="black"/> -->
+							<path id="Vector_2" d="M23 162.5V20.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_3" d="M3 50.5L23 29.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_4" d="M2 70.5L22 49.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_5" d="M1 92.5L21 71.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_6" d="M2 110.5L22 89.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_7" d="M1 130.5L21 109.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_8" d="M3 148.5L23 127.5" stroke="black" stroke-miterlimit="10"/>
+							<path id="Vector_9" d="M4 167.5L24 146.5" stroke="black" stroke-miterlimit="10"/>
+						</g>
+						<!-- <g id="Arrow">
+						<path id="Vector_10" d="M538 1H548V31H558.5L543 50L527.5 31H538V1Z" stroke="black" stroke-miterlimit="10"/>
+						</g> -->
+					</g>
+				</svg>
+		
+					<!-- <div id="arrow">
+						<svg version="1.1" id="Capa_1" >
+							<g>
+								<g id="arrow_down">
+									<path style="fill:#030104;" d="M32,16.016l-5.672-5.664c0,0-3.18,3.18-6.312,6.312V0h-8.023v16.664l-6.32-6.32L0,16.016L16,32 L32,16.016z"/>
+								</g>
+							</g>
+						</svg>
+					</div> -->
+				<div class="v-datalist-container graph v-canvas-container" id='graph'>
+
 					<div class="v-datalist-title">Graph Observations</div>
-					<div class="plot" id="plot0"></div>
+					
 					<div class="plot" id="plot1"></div>
 					<div class="plot" id="plot2"></div>
 				</div>
@@ -92,6 +133,5 @@
 		<script src="https://unpkg.com/mathjs@9.2.0/lib/browser/math.js"></script>
 		<script src="https://cdn.plot.ly/plotly-1.47.4.min.js"></script>
 		<script src="./js/data.json"></script>
-		<script src="./js/main.js"></script>
 	</body>
 </html>
