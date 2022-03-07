@@ -33,12 +33,9 @@ svg {
 	max-width: 100%;
 }
 
-#arrow {
-	margin-left: 540px;
+#ball {
+	margin-left: 700px;
 	margin-top: 1px;
-  width: 100px;
-  height: 100px;
- /* background: red;*/
   position: relative;
   animation: mymove 2s forwards;
 }
@@ -46,6 +43,15 @@ svg {
   from {top: 0px;}
   to {top: 50px;}
 }*/
+.ball {
+	position: relative;
+	bottom: 0%;
+	left: -1em;
+	width: 2em;
+	height: 2em;
+	border-radius: 50%;
+	background-color: orange;
+}
 
 g {
 	outline-color: solid 10px black;
@@ -84,3 +90,14 @@ g {
 		order: 2;
 	}
 }
+  #triangle1 {
+        width: 1px;
+        height: 1px;
+display: none;
+ opacity: 0;
+     transform: rotateX(170deg);
+    border-left: 0px solid transparent;
+    border-right: 170px solid transparent;
+    border-bottom: 58px solid #000000;
+        margin: 10px 0px 00px;
+      }
