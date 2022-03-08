@@ -17,6 +17,7 @@
 					<div id="procedure-message" class="v-instruction-text">
 					</div>					
 				</div>
+
 				<div class="column center-content">
 					<div class="select">
 						<select id="menu"> 
@@ -30,6 +31,13 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="columns is-mobile is-centered is-flex">
+			<div class="column has-text-centered">
+				<button id="Start" class="v-button">Start</button>
+			</div>
+		</div>
+
 
 		<div class="columns is-centered is-variable is-flex is-flex-wrap-wrap workspace">
 			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
@@ -70,15 +78,15 @@
 			<div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile observations">
 				<div class="v-datalist-container">
 					<div class="v-datalist-title">Observations</div>
-	<div class="" style="width: 100%;"><p style="    float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">SFD</p> </div>
+	<div class="" style="width: 100%;"><p style="    float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Share Force</p> </div>
 					<svg id="observations_point_load_sfd" width="0" height="50" viewBox="0 0 584 168"  stroke="black" fill="none" xmlns="http://www.w3.org/2000/svg">
 				
 						<g  stroke="black">
 						 <rect  x="25" y="65" width="520" height="70" stroke="black" fill="white"></rect> 
 						</g>
 					</svg>
-<div class="" style="width: 100%;"><p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">DM</p> </div>
-					<div id="triangle1" style="height:50"></div>
+<div class="" style="width: 100%;"><p style="    float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement</p> </div>
+					<div id="triangle1" style="height=50"></div>
 				</div>
 			</div>
 
@@ -88,17 +96,24 @@
 				
 				<div id ="ball" class="ball">
 				</div>
-				<svg width="540" height="254" viewBox="0 0 540 254" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<g id="cantilever-final" filter="url(#filter0_d_15_22)">
-					<g id="Rectangle 1">
-					<path d="M4 70.8025L104 0V178.815L4 246V70.8025Z" fill="#5A5A5A"/>
-					<path d="M4 70.8025L104 0V178.815L4 246V70.8025Z" stroke="black"/>
+				<svg width="484" height="168" viewBox="0 0 584 168"  stroke="black" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g id="Cantilever" stroke="black">
+						<g id="Frame">
+						<!-- Rect Max width 550 and setting it to half same as slider.-->
+						<!-- Rect height = 100 means y should be at 90, default 65 and height =1 means y= 40-->
+						 <rect id="rectangle" x="25" y="65" width="275" height="50" stroke="black" fill="white"></rect> 
+							<!-- <path id="Vector" d="M583 70.5H23V110.5H583V70.5Z" fill="white" stroke="black"/> -->
+							<path id="Vector_2" d="M23 162.5V20.5" stroke="black" stroke-miterlimit="10"/ stroke-width="40">
+							 
+						</g>
+						<!-- <g id="Arrow">
+						<path id="Vector_10" d="M538 1H548V31H558.5L543 50L527.5 31H538V1Z" stroke="black" stroke-miterlimit="10"/>
+						</g> -->
 					</g>
 					<g id="beam">
 					<path id="Rectangle 2" d="M44.3297 142.3L58.3741 92.1926H526.868L509.547 142.3H44.3297Z" fill="#C4C4C4" stroke="black" stroke-width="0.5"/>
 					<path id="Rectangle 3" d="M44.25 142.8H507.21L514.038 155.726H44.25V142.8Z" fill="#C4C4C4" stroke="black" stroke-width="0.5"/>
 					<path id="Rectangle 5" d="M507 140.23L527.063 91.6275L532.277 104.434L513.731 156.049L507 140.23Z" fill="#C4C4C4" stroke="black" stroke-width="0.5"/>
-					</g>
 					</g>
 					<defs>
 					<filter id="filter0_d_15_22" x="0" y="0" width="540" height="254" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
@@ -133,14 +148,6 @@
 			</div>
 		</div>
 
-		<div class="columns is-mobile is-centered is-flex">
-			<div class="column has-text-centered">
-				<button id="restart" class="v-button">Restart</button>
-			</div>
-		</div>
-
-		
-		
 		<script src="https://unpkg.com/mathjs@9.2.0/lib/browser/math.js"></script>
 		<script src='https://cdn.plot.ly/plotly-1.47.4.min.js'></script>
 		<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
