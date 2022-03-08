@@ -1,20 +1,15 @@
-// document.getElementById("arrow").addEventListener("load", myFunction);
-
-// function myFunction() {
-//   document.getElementById("arrow").innerHTML = "arrow_down";
-// }
 var id = null;
 
 function setDefaults(){
-	var arrow = document.getElementById("arrow");
-	arrow.style.marginLeft='315px';
-	arrow.style.top='0px';
+	var ball = document.getElementById("ball");
+	ball.style.marginLeft='315px';
+	ball.style.top='0px';
 
 }
 
 function myFunction() {
     if (document.getElementById("radio-style_point_load").checked) {
-        var elem = document.getElementById("arrow");
+        var elem = document.getElementById("ball");
 		var rect = document.getElementById("beam");
 		var bbox = rect.getBBox();
 		var y = 135 - (bbox.height - 50)/2
@@ -120,8 +115,8 @@ anime({
     var width = (len * 550) / 100;
     var diff = width - orginalLen;
     var pos = 0;
-	var elem = document.getElementById("arrow");
-	var arrowMarginfLeft = parseInt((elem.style.marginLeft).split('px'));
+	var elem = document.getElementById("ball");
+	var ballMarginfLeft = parseInt((elem.style.marginLeft).split('px'));
     clearInterval(id);
 	var left = 315;
 	if(len === 100) left = 540;
@@ -169,7 +164,7 @@ anime({
 	var y = Math.floor(height/2);
     var diff = height - orginalheight;
     var pos = 0, posy = 0;
-	var elem = document.getElementById("arrow");
+	var elem = document.getElementById("ball");
     clearInterval(id);
 	var top = 0;
 	elem.style.top = '0px';
