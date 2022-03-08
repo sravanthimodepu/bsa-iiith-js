@@ -1,3 +1,4 @@
+
 var id = null;
 
 function setDefaults(){
@@ -5,11 +6,33 @@ function setDefaults(){
 	ball.style.marginLeft='315px';
 	ball.style.top='0px';
 
+var button = document.getElementById("button");
+var svg = document.getElementById("player");
+
+button.addEventListener("click", function(){
+  if(svg.paused){
+    svg.play();
+    button.innerHTML = "Pause";
+  } else {
+    svg.pause();
+    button.innerHTML = "Play";
+  }
+});
+
+
+var id = null;
+
+function setDefaults(){
+	var arrow = document.getElementById("arrow");
+	arrow.style.marginLeft='315px';
+	// arrow.style.top='1px';
+
+
 }
 
 function myFunction() {
     if (document.getElementById("radio-style_point_load").checked) {
-        var elem = document.getElementById("ball");
+        var elem = document.getElementById("arrow");
 		var rect = document.getElementById("beam");
 		var bbox = rect.getBBox();
 		var y = 135 - (bbox.height - 50)/2
@@ -227,3 +250,4 @@ document.addEventListener('DOMContentLoaded', function() {
 		restartButton.addEventListener('click', function() { myAnimation.restart(); });
 	}
 })
+}

@@ -33,11 +33,11 @@ svg {
 	max-width: 100%;
 }
 
-#ball {
-	margin-left: 700px;
+#arrow {
+	margin-left: 415px;
 	margin-top: 1px;
   position: relative;
-  animation: mymove 2s forwards;
+  animation: mymove 10s forwards;
 }
 /*@keyframes mymove {
   from {top: 0px;}
