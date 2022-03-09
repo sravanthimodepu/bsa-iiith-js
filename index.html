@@ -6,8 +6,6 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.6-b/css/style.min.css">
 		<link rel="stylesheet" href="css/main.css">
 		<script type="text/javascript" src="js/bulma-slider.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
-		<script src="./js/main.js"></script>
 	</head>
 
 	<body class="page" onload="setDefaults()">
@@ -19,7 +17,7 @@
 					</div>					
 				</div>
 				<div class="column center-content">
-					<div class="select">
+					<div class="v-select">
 						<select id="menu"> 
 							<option value="CL">Cantilever</option>	
 							<option value="FB">Fixed Beam</option>
@@ -31,8 +29,10 @@
 				</div>
 <div class="columns is-mobile is-centered is-flex">
  						<div id="anime-demo" class="column has-text-centered controls">
-							<button id="play" class="v-button">Play</button>
+							<button id="play" class="v-button" onclick="myFunction()" >Play</button>
 							<button id="pause" class="v-button">Pause</button>
+							<button id="Start" class="v-button">Restart</button>
+							</div>
 							<!-- <button id="restart" class="v-button">Restart</button> -->
 							<!-- <button id="restart" class="v-button">Restart</button> -->
 						</div> 
@@ -44,22 +44,27 @@
 			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
 				<div class="v-datalist-container">
 					<div class="v-datalist-title" id="load"> Load Type</div>	
-            <label class="v-radio v-datalist-row" ><input type="radio" class="v-radio-input" name="answer" value="Point Load" onclick="myFunction()" id="radio-style_point_load" >Point Load</label>
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Point Load" id="radio-style_point_load" >Point Load</label>
             <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" 	onclick="myFunction()">UDL</label>
             <!-- <div id="result">Result : </div> -->
             	<p class="v-datalist-title">Input Parameters</p>
-            	<div class="columns is-mobile is-pulled-left" align="left">
+            	<div class="columns is-mobile is-pulled-left">
         				<div class="column" id="slider-left" >
-          				<p>Length: <output for="sliderWithValueTooltipLength">50</output></p>
+          				<p>Length(mts): <output for="sliderWithValueTooltipLength">50</output></p>
           				<input id="sliderWithValueTooltipLength" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range" onchange="adjustRectLength()">
           				<script>
               		bulmaSlider.attach();
           				</script>
-          				<p>Breadth: <output for="sliderWithValueTooltipBreadth">50</output></p>
-          				<input id="sliderWithValueTooltipBreadth" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range" onchange="adjustRectBreadth()">
+          				<p>Depth(mm): <output for="sliderWithValueTooltipBreadth">80</output></p>
+          				<input id="sliderWithValueTooltipBreadth" class="slider has-output-tooltip is-success is-circle " min="25" max="120" value="80" type="range" onchange="adjustRectBreadth()">
           				<script>
               		bulmaSlider.attach();
           				</script>
+						  	</script>						  
+						  <!-- <div class="slidecontainer">
+							<p>Load : <span id="id_weight"></span></p>
+							<input type="range" min="100" max="1000" value="500" class="slider" id="weight">
+						</div> -->
           				
         				</div>
       				</div>
@@ -79,7 +84,7 @@
 						</g>
 					</svg>
 <div class="" style="width: 100%;"><p style="    float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement</p> </div>
-					<div id="triangle1" style="height=50"></div>
+					<div id="triangle1" style="height:50"></div>
 				</div>
 			</div>
 
@@ -121,6 +126,7 @@
 							</g>
 						</svg>
 					</div> -->
+					
 				<div class="v-datalist-container graph v-canvas-container" id='graph'>
 
 					<div class="v-datalist-title">Graph Observations</div>
@@ -131,14 +137,12 @@
 			</div>
 		</div>
 
-		<div class="columns is-mobile is-centered is-flex">
-			<div class="column has-text-centered">
-				<button id="Start" class="v-button">Start</button>
-			</div>
-		</div>
+		
 
 		<script src="https://unpkg.com/mathjs@9.2.0/lib/browser/math.js"></script>
 		<script src="https://cdn.plot.ly/plotly-1.47.4.min.js"></script>
 		<script src="./js/data.json"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+ 		<script src="./js/main.js"></script>
 	</body>
 </html>

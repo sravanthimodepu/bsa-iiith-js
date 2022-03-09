@@ -7,7 +7,6 @@ var id = null;
 
 function setDefaults(){
 	var arrow = document.getElementById("arrow");
-	arrow.style.marginLeft='315px';
 	arrow.style.top='0px';
 
 }
@@ -193,3 +192,44 @@ anime({
         }
     }
 }
+// slider for Weight of load
+
+document.addEventListener('DOMContentLoaded', function() {	
+	let weight = 600;
+	// slider for weight of load
+	const slider_weight = document.getElementById("weight");
+	const output_weight = document.getElementById("id_weight");
+	output_weight.innerHTML = slider_weight.value; // Display the default slider value
+
+	slider_weight.oninput = function() {
+		output_weight.innerHTML = this.value;
+		updatePara();
+	};
+
+	let myAnimation = anime({
+		rotate: [displacement, -1 * displacement],
+		duration: function(){
+			return time;
+		},
+		easing: 'easeInOutSine',
+		direction: 'alternate',
+		loop: true,
+	});   
+
+	function updatePara()
+	{	
+		weight = document.getElementById("weight").value;		
+		const ball_css = document.querySelector("#arrow");
+
+
+		ball_css.style.height = weight / 300 + "em" ;
+		ball_css.style.width = weight / 300 + "em" ;
+		ball_css.style.left = weight / (-600) + "em" ;
+
+
+		playButton.addEventListener('click', function() { myAnimation.play(); });
+		pauseButton.addEventListener('click', function() { myAnimation.pause(); });
+		restartButton.addEventListener('click', function() { myAnimation.restart(); });
+	}
+});
+
