@@ -34,7 +34,7 @@ svg {
 }
 
 #arrow {
-	margin-left: 315px;
+	margin-left: 580px;
 	margin-top: 1px;
   width: 100px;
   height: 100px;
@@ -84,14 +84,3 @@ g {
 		order: 2;
 	}
 }
-  #triangle1 {
-        width: 1px;
-        height: 1px;
-display: none;
- opacity: 0;
-     transform: rotateX(170deg);
-    border-left: 0px solid transparent;
-    border-right: 170px solid transparent;
-    border-bottom: 58px solid #000000;
-        margin: 10px 0px 00px;
-      }
