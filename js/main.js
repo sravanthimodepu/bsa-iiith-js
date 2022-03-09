@@ -1,12 +1,57 @@
-var id = null;
+// slider for mass of bob
 
-function setDefaults(){
-	var ball = document.getElementById("ball");
-	ball.style.marginLeft='315px';
-	ball.style.top='0px';
+document.addEventListener('DOMContentLoaded', function() {  
+    let mass = 600;
+    // slider for mass of bob
+    const slider_mass = document.getElementById("mass");
+    const output_mass = document.getElementById("id_mass");
+    output_mass.innerHTML = slider_mass.value; // Display the default slider value
 
-}
+    slider_mass.oninput = function() {
+        output_mass.innerHTML = this.value;
+        updatePara();
+    };
 
+    let myAnimation = anime({
+        targets: '#rod',
+        rotate: [displacement, -1 * displacement],
+        duration: function(){
+            return time;
+        },
+        easing: 'easeInOutSine',
+        direction: 'alternate',
+        loop: true,
+    });   
+
+    function updatePara()
+    {   
+        mass = document.getElementById("mass").value;       
+        const ball_css = document.querySelector("#ball");
+
+        
+        ball_css.style.height = mass / 300 + "em" ;
+        ball_css.style.width = mass / 300 + "em" ;
+        ball_css.style.left = mass / (-600) + "em" ;
+
+    }
+})
+
+// control buttons : play, pause ,restart
+var slowAnimation = anime({
+  targets: '.ball',
+  translateY: 100,
+  borderRadius: 50,
+  duration: 4000,
+  easing: 'linear',
+  autoplay: false
+});
+
+document.querySelector('#play').onclick = slowAnimation.play;
+document.querySelector('#pause').onclick = slowAnimation.pause;
+document.querySelector('#restart').onclick = slowAnimation.restart;
+
+
+//
 function myFunction() {
     if (document.getElementById("radio-style_point_load").checked) {
         var elem = document.getElementById("ball");
@@ -22,18 +67,18 @@ function animate(){
 anime({
       //target
       targets: "#beam",
-      //Properties
-      //rotateY: 360,
-      //scale: 0.5,
-     // translateX: 300,
-     // skew: 30,
-      // Property Parameters
-     // duration: 1000,
+    //Properties
+    //rotateY: 360,
+    //scale: 0.5,
+   // translateX: 300,
+   // skew: 30,
+   // Property Parameters
+   // duration: 1000,
       endDelay: 300,
       easing: "easeInOutSine",
-      // Animation Parameters
-     // direction: "alternate",
- rotate: [0, 5],
+   // Animation Parameters
+   // direction: "alternate",
+      rotate: [0, 5],
       duration: 4000,
 
       loop: false,
@@ -48,7 +93,7 @@ anime({
     });
  anime({
       targets: "#triangle1",
-opacity: 1,
+      opacity: 1,
       duration: 4000,
       endDelay: 300,
       easing: "easeInOutSine",
@@ -72,6 +117,7 @@ setTimeout(animate,800);
     }
 
 }
+
 
 function getOption() {
     selectElement = document.querySelector('#menu');
@@ -98,13 +144,13 @@ function adjustRectLength() {
 document.getElementById('triangle1').style.display = 'none'
 anime({
       targets: "#rectangle",
-	 rotate: [0, 0],
+	  rotate: [0, 0],
       duration: 1,
       loop: false,
     });
 anime({
       targets: "#observations_point_load_sfd",
-	 width:0,
+	  width:0,
       duration: 1,
       loop: false,
     });
@@ -146,13 +192,13 @@ function adjustRectBreadth() {
 document.getElementById('triangle1').style.display = 'none'
 anime({
       targets: "#rectangle",
-	 rotate: [0, 0],
+	  rotate: [0, 0],
       duration: 1,
       loop: false,
     });
 anime({
       targets: "#observations_point_load_sfd",
-	 width:0,
+	  width:0,
       duration: 1,
       loop: false,
     });
@@ -186,44 +232,3 @@ anime({
         }
     }
 }
-// slider for mass of bob
-
-document.addEventListener('DOMContentLoaded', function() {	
-	let mass = 600;
-	// slider for mass of bob
-	const slider_mass = document.getElementById("mass");
-	const output_mass = document.getElementById("id_mass");
-	output_mass.innerHTML = slider_mass.value; // Display the default slider value
-
-	slider_mass.oninput = function() {
-		output_mass.innerHTML = this.value;
-		updatePara();
-	};
-
-	let myAnimation = anime({
-		targets: '#rod',
-		rotate: [displacement, -1 * displacement],
-		duration: function(){
-			return time;
-		},
-		easing: 'easeInOutSine',
-		direction: 'alternate',
-		loop: true,
-	});   
-
-	function updatePara()
-	{	
-		mass = document.getElementById("mass").value;		
-		const ball_css = document.querySelector("#ball");
-
-		
-		ball_css.style.height = mass / 300 + "em" ;
-		ball_css.style.width = mass / 300 + "em" ;
-		ball_css.style.left = mass / (-600) + "em" ;
-
-
-		playButton.addEventListener('click', function() { myAnimation.play(); });
-		pauseButton.addEventListener('click', function() { myAnimation.pause(); });
-		restartButton.addEventListener('click', function() { myAnimation.restart(); });
-	}
-})
