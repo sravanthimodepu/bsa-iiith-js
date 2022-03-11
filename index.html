@@ -29,11 +29,11 @@
 					<p><span class="boundaryType"></span></p>
 					</div>
  					<div class="columns is-mobile is-centered is-flex">
- 						<div id="anime-demo" class="column has-text-centered controls">
-							<button id="play" class="v-button">Play</button>
+ 						<div id="anime-demo" class="column has-text-centered controls" onclick="myFunction()">
+							<button id="play" class="v-button" >Play</button>
 							<button id="pause" class="v-button">Pause</button>
-							<!-- <button id="restart" class="v-button">Restart</button> -->
-							<!-- <button id="restart" class="v-button">Restart</button> -->
+							<button id="restart" class="v-button">Restart</button>
+							
 						</div> 
 					</div>
 
@@ -44,25 +44,26 @@
 			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
 				<div class="v-datalist-container">
 					<div class="v-datalist-title" id="load"> Load Type</div>	
-            <label class="v-radio v-datalist-row" ><input type="radio" class="v-radio-input" name="answer" value="Point Load" id="radio-style_point_load" >Point Load</label>
-            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" >UDL</label>
-               	<p class="v-datalist-title">Input Parameters</p>
-            	<div class="columns is-mobile is-pulled-left">
-					<div class="column" id="slider-left" >
-            			<form>
-            				<p>Length: <output for="sliderWithValueTooltipLength">50</output></p>
-  							<input id="x1" type="range" value="100" min="0" max="500">
-  							<p>Breadth: <output for="sliderWithValueTooltipBreadth">50</output></p>
-  							<input id="x2" type="range" value="100" min="0" max="500">
-  							<p>Depth: <output for="sliderWithValueTooltipLoad">50</output></p>
-  							<input id="y" type="range" value="100" min="0" max="500">
-  							<!-- <input id="color" type="color" value="#ff8d4b"> -->
-						</form>
-        			
-          				<div class="slidecontainer">
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Point Load"	 id="radio-style_point_load" >Point</label>
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" 	>Uniform Distributed </label>
+            <!-- <div id="result">Result : </div> -->
+            	<p class="v-datalist-title">Input Parameters</p>
+            	<div class="columns is-mobile is-pulled-left" align="left">
+        				<div class="column" id="slider-left" >
+          				<p id="radio-style">Length(mts): <output for="sliderWithValueTooltipLength">50</output></p>
+          				<input id="sliderWithValueTooltipLength" class="slider has-output-tooltip is-success is-circle " min="10" max="100" value="50" type="range" onchange="adjustRectLength()">
+          				<script>
+              		bulmaSlider.attach();
+          				</script>
+          				<p id="radio-style">Depth(mm): <output for="sliderWithValueTooltipBreadth">50</output></p>
+          				<input id="sliderWithValueTooltipBreadth" class="slider has-output-tooltip is-success is-circle " min="25" max="100" value="50" type="range" onchange="adjustRectBreadth()">
+          				<script>
+              		bulmaSlider.attach();
+          				</script>
+          				<!-- <div class="slidecontainer">
 							<p>Load: (KN)  <span id="id_mass"></span></p>
 							<input type="range" min="100" max="1000" value="500" class="slider" id="mass">
-						</div>
+						</div> -->
         				</div>
       				</div>
       					
@@ -73,10 +74,10 @@
 			<div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile observations">
 				<div class="v-datalist-container">
 					<div class="v-datalist-title">Observations</div>
-						<div class="" style="width: 100%;"><p style="    float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> </div>
+						<div class="" style="width: 100%;"><p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> </div>
 							<svg id="observations_point_load_sfd" width="0" height="50" viewBox="0 0 584 168"  stroke="black" fill="none" xmlns="http://www.w3.org/2000/svg">
 				
-								<g  stroke="black">
+								<g stroke="black">
 									 <rect  x="25" y="65" width="520" height="70" stroke="black" fill="white"></rect> 
 								</g>
 							</svg>
@@ -89,45 +90,32 @@
 				<!-- <canvas id="main" class="v-canvas-container"></canvas> -->
 				<!-- <div></div> -->
 				
-				<div id ="ball" class="ball"></div>
-				<div id="cube" class="canvas">
-					
-				</div>
-					<svg width="540" height="254" viewBox="0 0 540 254" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<g id="cantilever-final" filter="url(#filter0_d_15_22)">
-							<g id="Rectangle 1">
-								<path d="M4 70.8025L104 0V178.815L4 246V70.8025Z" fill="#5A5A5A"/>
-								<path d="M4 70.8025L104 0V178.815L4 246V70.8025Z" stroke="black"/>
-							</g>
-							<g id="beam">
-								<path id="Rectangle 2" d="M44.3297 142.3L58.3741 92.1926H526.868L509.547 142.3H44.3297Z" fill="#C4C4C4" stroke="black" stroke-width="0.5"/>
-								<path id="Rectangle 3" d="M44.25 142.8H507.21L514.038 155.726H44.25V142.8Z" fill="#C4C4C4" stroke="black" stroke-width="0.5"/>
-								<path id="Rectangle 5" d="M507 140.23L527.063 91.6275L532.277 104.434L513.731 156.049L507 140.23Z" fill="#C4C4C4" stroke="black" stroke-width="0.5"/>
-							</g>
-						</g>
-						<defs>
-						<filter id="filter0_d_15_22" x="0" y="0" width="540" height="254" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-						<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-						<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-						<feOffset dy="4"/>
-						<feGaussianBlur stdDeviation="2"/>
-						<feComposite in2="hardAlpha" operator="out"/>
-						<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-						<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_15_22"/>
-						<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_15_22" result="shape"/>
-						</filter>
-						</defs>
-						</svg>
-		
-					<!-- <div id="arrow">
-						<svg version="1.1" id="Capa_1" >
+				<div id ="arrow" class="arrow">
+					<svg version="1.1" id="Capa_1" >
 							<g>
 								<g id="arrow_down">
 									<path style="fill:#030104;" d="M32,16.016l-5.672-5.664c0,0-3.18,3.18-6.312,6.312V0h-8.023v16.664l-6.32-6.32L0,16.016L16,32 L32,16.016z"/>
 								</g>
 							</g>
 						</svg>
-					</div> -->
+				</div>
+				<div id="cube" class="canvas">
+					
+				</div>
+					<svg width="484" height="168" viewBox="0 0 584 168"  stroke="black" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g id="Cantilever" stroke="black">
+						<g id="Frame">
+						<!-- Rect Max width 550 and setting it to half same as slider.-->
+						<!-- Rect height = 100 means y should be at 90, default 65 and height =1 means y= 40-->
+						 <rect id="rectangle" x="25" y="65" width="275" height="50" stroke="black" fill="white"></rect> 
+							<!-- <path id="Vector" d="M583 70.5H23V110.5H583V70.5Z" fill="white" stroke="black"/> -->
+							<path id="Vector_2" d="M23 162.5V20.5" stroke="black" stroke-miterlimit="10"/ stroke-width="40">
+							 
+						</g>
+					</g>
+				</svg>
+		
+					
 				<div class="v-datalist-container graph v-canvas-container" id='graph'>
 
 					<div class="v-datalist-title">Graph Observations</div>
@@ -138,11 +126,11 @@
 			</div>
 		</div>
 
-		<div class="columns is-mobile is-centered is-flex">
+		<!-- <div class="columns is-mobile is-centered is-flex">
 			<div id="anime-demo" class="column has-text-centered controls">
 				<button id="restart" class="v-button">Restart</button>
 			</div>
-		</div>
+		</div> -->
 
 		
 		
