@@ -88,24 +88,45 @@ anime({
       loop: false,
     });
 anime({
-      targets: "#observations_point_load_sfd",
-      width: '100%',
-      endDelay: 300,
-      easing: "easeInOutSine",
-      duration: 4000,
-      loop: false,
-    });
+    targets: ".svg-sfd path",
+    duration: 1000,
+    strokeDashoffset: [anime.setDashoffset, 0],
+    easing: "easeInOutSine",
+    direction: "alternate",
+    delay: anime.stagger(200),
+    d: [
+        {
+            value:
+                "M 100 300 L 350 300 L 350 350 L 100 350 L 100 300 "
+        },
+        {
+            value:
+                "M 100 300 L 350 300 L 350 350 L 100 350 L 100 300 "
+        }
+    ],
+    loop: false
+
+});
  anime({
-      targets: "#triangle1",
-opacity: 1,
-      duration: 4000,
-      endDelay: 300,
-      easing: "easeInOutSine",
-      loop: false,
- begin: function() {
-    document.querySelector('#triangle1').style.display = 'block';
-  },
-    });
+    targets: ".svg-bmd path",
+    duration: 1000,
+    strokeDashoffset: [anime.setDashoffset, 0],
+    easing: "easeInOutSine",
+    direction: "alternate",
+    delay: anime.stagger(200),
+    d: [
+        {
+            value:
+                "M 100 300 L 450 300 L 100 400 L 100 300 L 100 300 "
+        },
+        {
+            value:
+                "M 100 300 L 450 300 L 100 400 L 100 300 L 100 300 "
+        }
+    ],
+    loop: false
+
+});
 }
 
         function frame() {
