@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.6-b/css/style.min.css">
+		<link rel="stylesheet" href="css/main.css">
+		<script type="text/javascript" src="js/bulma-slider.min.js"></script>
+ <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script> -->
+ <script src='https://cdnjs.cloudflare.com/ajax/libs/animejs/3.1.0/anime.min.js'></script><script  src="./script.js"></script>	
+	</head>
+
+	<body class="page" onload="setDefaults()">
+		<div class="columns is-centered is-flex">
+			<div class="column mt-2 is-4-desktop is-10-tablet is-10-mobile has-text-centered">
+				<div class="v-instruction-container">
+					<div class="v-instruction-title">Instructions</div>
+					<div id="procedure-message" class="v-instruction-text">
+					</div>					
+				</div>
+				<div class="column center-content">
+					<div class="select">
+						<select id="menu"> 
+							<option value="CL">Cantilever</option>	
+							<option value="FB">Fixed Beam</option>
+							<option value="OS">One side fixed one side SS</option>	
+							<option value="TS">Two side SS</option>
+						</select>
+					</div>
+					<p><span class="boundaryType"></span></p>
+					</div>
+ 					<div class="columns is-mobile is-centered is-flex">
+ 						<div id="anime-demo" class="column has-text-centered controls" onclick="myFirstFunction()">
+							<button id="play" class="v-button" >Play</button>
+							<button id="pause" class="v-button">Pause</button>
+							<button id="restart" class="v-button">Restart</button>
+							
+						</div> 
+					</div>
+
+				</div>
+		</div>
+
+		<div class="columns is-centered is-variable is-flex is-flex-wrap-wrap workspace">
+			<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
+				<div class="v-datalist-container">
+					<div class="v-datalist-title" id="load"> Load Type</div>	
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="Point Load"	 id="radio-style_point_load" >Point</label>
+            <label class="v-radio v-datalist-row" id="radio-style"><input type="radio" class="v-radio-input" name="answer" value="UDL" 	id="radio-style_ud_load">Uniform Distributed </label>
+            <!-- <div id="result">Result : </div> -->
+            	<p class="v-datalist-title">Input Parameters</p>
+            	<div class="columns is-mobile is-pulled-left" align="left">
+        				<div class="column" id="slider-left" >
+          				<p id="radio-style">Length(mts): <output for="sliderWithValueTooltipLength">50</output></p>
+          				<input id="sliderWithValueTooltipLength" class="slider has-output-tooltip is-success is-circle " min="10" max="100" value="50" type="range" onchange="adjustRectLength()">
+          				<script>
+              		bulmaSlider.attach();
+          				</script>
+          				<p id="radio-style">Depth(mm): <output for="sliderWithValueTooltipBreadth">50</output></p>
+          				<input id="sliderWithValueTooltipBreadth" class="slider has-output-tooltip is-success is-circle " min="25" max="100" value="50" type="range" onchange="adjustRectBreadth()">
+          				<script>
+              		bulmaSlider.attach();
+          				</script>
+          				<!-- <div class="slidecontainer">
+							<p>Load: (KN)  <span id="id_mass"></span></p>
+							<input type="range" min="100" max="1000" value="500" class="slider" id="mass">
+						</div> -->
+        				</div>
+      				</div>
+      					
+				</div>
+
+			</div>
+
+			<div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile observations">
+				<div class="v-datalist-container">
+					<div class="v-datalist-title">Observations</div>
+						<div class="" style="width: 100%;"><p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> </div>
+						<div id="triangle1" style="height:50">
+							<svg class="svg-sfd" xmlns="http://www.w3.org/2000/svg" width="100px" height="70px" viewBox="140 100 320 100">
+								<path d="M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150" style="stroke:black;fill:none;stroke-width:5px;" />
+							</svg>
+						</div>	
+														
+						<div  class="" style="width: 100%;"><p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Moment</p> </div>
+							<div id="observations_point_load_sfd" style="height:50" width="0">		
+								
+								<svg class="svg-bmd" xmlns="http://www.w3.org/2000/svg" width="150px" height="70px" viewBox="30 200 350 150">
+									<path d="M 100 300 L 300 300 L 200 250 L 100 300 " style="stroke:black;fill:none;stroke-width:5px;" />
+								</svg>
+							</div>			
+				</div>
+			</div>
+
+			<div class="column has-text-centered is-6-desktop is-10-tablet is-10-mobile simulation v-canvas-container" id="container">
+				<!-- <canvas id="main" class="v-canvas-container"></canvas> -->
+				<!-- <div></div> -->
+				
+				<div id ="arrow" class="arrow">
+					<svg width="316" height="52" viewBox="0 0 316 52" fill="none">
+						<!-- <path d="M78 16.016L72.328 10.352C72.328 10.352 69.148 13.532 66.016 16.664V0H57.993V16.664L51.673 10.344L46 16.016L62 32L78 16.016Z" fill="#030104"/> -->
+						<!-- <path d="M78 16.016L72.328 10.352C72.328 10.352 69.148 13.532 66.016 16.664V0H57.993V16.664L51.673 10.344L46 16.016L62 32L78 16.016Z" fill="#030104"/> -->
+						<!-- <path d="M32 16.016L26.328 10.352C26.328 10.352 23.148 13.532 20.016 16.664V0H11.993V16.664L5.673 10.344L0 16.016L16 32L32 16.016Z" fill="#030104"/> -->
+						<path d="M170 16.016L164.328 10.352C164.328 10.352 161.148 13.532 158.016 16.664V0H149.993V16.664L143.673 10.344L138 16.016L154 32L170 16.016Z" fill="#030104"/>
+						<!-- <path d="M170 16.016L164.328 10.352C164.328 10.352 161.148 13.532 158.016 16.664V0H149.993V16.664L143.673 10.344L138 16.016L154 32L170 16.016Z" fill="#030104"/> -->
+						<!-- <path d="M124 16.016L118.328 10.352C118.328 10.352 115.148 13.532 112.016 16.664V0H103.993V16.664L97.673 10.344L92 16.016L108 32L124 16.016Z" fill="#030104"/> -->
+						<!-- <path d="M216 16.016L210.328 10.352C210.328 10.352 207.148 13.532 204.016 16.664V0H195.993V16.664L189.673 10.344L184 16.016L200 32L216 16.016Z" fill="#030104"/> -->
+					</svg>
+
+				</div>
+				<div id="cube" class="canvas">
+					
+				</div>
+					<svg width="484" height="168" viewBox="0 0 584 168"  stroke="black"  xmlns="http://www.w3.org/2000/svg">
+					<g id="Cantilever" stroke="black">
+						<g id="Frame">
+						<!-- Rect Max width 550 and setting it to half same as slider.-->
+						<!-- Rect height = 100 means y should be at 90, default 65 and height =1 means y= 40-->
+						 <rect id="rectangle" x="25" y="65" width="275" height="50" stroke="black" fill="#cc9766"></rect> 
+							<!-- <path id="Vector" d="M583 70.5H23V110.5H583V70.5Z" fill="white" stroke="black"/> -->
+							<path id="Vector_2" d="M23 162.5V20.5" stroke="black" stroke-miterlimit="10"/ stroke-width="40">
+							 
+						</g>
+					</g>
+				</svg>
+		
+					
+				<div class="v-datalist-container graph v-canvas-container" id='graph'>
+
+					<div class="v-datalist-title">Graph Observations</div>
+					
+					<div class="plot" id="plot1"></div>
+					<div class="plot" id="plot2"></div>
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="columns is-mobile is-centered is-flex">
+			<div id="anime-demo" class="column has-text-centered controls">
+				<button id="restart" class="v-button">Restart</button>
+			</div>
+		</div> -->
+
+		
+		
+		<script src="https://unpkg.com/mathjs@9.2.0/lib/browser/math.js"></script>
+		<script src='https://cdn.plot.ly/plotly-1.47.4.min.js'></script>
+		<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+		<script src="./js/main.js"></script>
+		<script src="./js/data.json"></script>
+	</body>
+
+
+</html>
+

@@ -1,11 +1,11 @@
-.page {
+	.page {
 	overflow-x: scroll;
 }
 
 .v-canvas-container {
 	width: 100%;
 	height: 100%;
-	background-color: #f2f2f2;
+	/*background-color: #b3ecff;*/
 }
 
 .v-datalist-container {
@@ -30,14 +30,31 @@ svg {
 }
 
 #arrow {
-	/*margin-left: 315px;*/
+	margin-left: 315px;
 	margin-top: 1px;
-  /*width: 100px;*/
-  /*height: 100px;*/
+  width: 100px;
+  height: 100px;
   position: relative;
   animation: mymove 2s forwards;
 }
-/**/
+
+/*#ball {
+	margin-left: 315px;
+	margin-top: 1px;
+  position: relative;
+  animation: mymove 1s forwards;
+}
+.ball {
+	position: relative;
+	bottom: 0%;
+	left: -1em;
+	width: 2em;
+	height: 2em;
+	/*border-radius: 50%;*/
+	/*background-color: orange;*/
+/*}
+*/
+
 g {
 	outline-color: solid 10px black;
 }
@@ -75,15 +92,12 @@ g {
 		order: 2;
 	}
 }
- /* #triangle1 {
-      width: 1px;
-      height: 1px;
-      display: none;
-      opacity: 0;
-      transform: rotateX(170deg);
-      border-left: 0px solid transparent;
-      border-right: 170px solid transparent;
-      border-bottom: 58px solid #000000;
-      margin: 10px 0px 00px;
-  }
-*/
+
+/*.svg {
+	margin: auto;
+	display: block;
+	width: 500px;
+	height: 300px;
+	max-height: 100vh;
+	max-width: 100%;
+}*/
