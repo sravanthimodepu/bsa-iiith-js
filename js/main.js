@@ -52,7 +52,7 @@ document.querySelector('#restart').onclick = slowAnimation.restart;
 
 
 // point load
-function myPoint() {
+function myFunction() {
     if (document.getElementById("radio-style_point_load").checked) {
         var elem = document.getElementById("arrow");
         var rect = document.getElementById("rectangle");
@@ -71,10 +71,20 @@ function animate(){
 anime({ 
       //target
       targets: "#rectangle",
+      //Properties
+      //rotateY: 360,
+      //scale: 0.5,
+     // translateX: 300,
+     // skew: 30,
+      // Property Parameters
+     // duration: 1000,
       endDelay: 300,
       easing: "easeInOutSine",
+      // Animation Parameters
+     // direction: "alternate",
  rotate: [0, 5],
       duration: 4000,
+
       loop: false,
     });
 anime({
@@ -111,6 +121,21 @@ setTimeout(animate,800);
     }
 
 
+// control buttons : play, pause ,restart
+
+// slowAnimation = anime({
+//   targets: '.arrow',
+//   translateY: 68,
+//   borderRadius: 20,
+//   duration: 4000,
+//   easing: 'linear',
+//   autoplay: false
+// });
+
+// document.querySelector('#play').onclick = slowAnimation.play;
+// document.querySelector('#pause').onclick = slowAnimation.pause;
+// document.querySelector('#restart').onclick = slowAnimation.restart;
+
 }
 
 function getOption() {
@@ -138,13 +163,13 @@ function adjustRectLength() {
 document.getElementById('triangle1').style.display = 'none'
 anime({
       targets: "#rectangle",
-      rotate: [0, 0],
+     rotate: [0, 0],
       duration: 1,
       loop: false,
     });
 anime({
       targets: "#observations_point_load_sfd",
-      width:0,
+     width:0,
       duration: 1,
       loop: false,
     });
@@ -225,66 +250,4 @@ anime({
             }
         }
     }
-}
-
-// uniform distributed load
-function mySecondFunction() {
-    if (document.getElementById("radio-style").checked) {
-        var elem = document.getElementById("arrow");
-        var rect = document.getElementById("rectangle");
-        var bbox = rect.getBBox();
-        var y = 135 - (bbox.height - 50)/2
-console.log(elem.style.top,bbox.height,y)
-        // var play= document.getElementById("#play");
-        // var pause=document.getElementById("#pause");
-        // var restart=document.getElementById("#restart");
-
-        var posy = 0;
-        clearInterval(id);
-        id = setInterval(frame, 10);
-
-function animate(){
-anime({ 
-      //target
-      targets: "#rectangle",
-      endDelay: 300,
-      easing: "easeInOutSine",
-      rotate: [0, 5],
-      duration: 4000,
-      loop: false,
-    });
-anime({
-      targets: "#observations_point_load_sfd",
-      width: '100%',
-      endDelay: 300,
-      easing: "easeInOutSine",
-      duration: 4000,
-      loop: false,
-    });
- anime({
-      targets: "#triangle1",
-opacity: 1,
-      duration: 4000,
-      endDelay: 300,
-      easing: "easeInOutSine",
-      loop: false,
- begin: function() {
-    document.querySelector('#triangle1').style.display = 'block';
-  },
-    });
-}
-
-        function frame() {
-            if (posy > y ) { 
-                clearInterval(id);
-setTimeout(animate,800);
-
-            } else {
-                posy++;
-                elem.style.top = posy + 'px';
-            }
-        }
-    }
-
-
 }
