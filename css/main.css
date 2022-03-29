@@ -1,19 +1,20 @@
 .page {
-	overflow-x: scroll;
+	
+	overflow-y: hidden;
+overflow-x: hidden;
 }
 
 .v-canvas-container {
 	width: 100%;
 	height: 100%;
+	/*background-color: #b3ecff;*/
+	border: 0.2rem solid #97d23d !important;
+	border-radius: 25px;
+
 }
 
 .v-datalist-container {
 	height: 100%;
-}
-
-#result{
-	font-weight: bold;
-		/*justify-content	: left;*/
 }
 
 #border-radius{
@@ -34,18 +35,30 @@ svg {
 }
 
 #arrow {
-	margin-left: 400px;
+	margin-left: 197px;
 	margin-top: 1px;
   width: 100px;
   height: 100px;
- /* background: red;*/
   position: relative;
   animation: mymove 2s forwards;
 }
-/*@keyframes mymove {
-  from {top: 0px;}
-  to {top: 50px;}
-}*/
+
+/*#ball {
+	margin-left: 315px;
+	margin-top: 1px;
+  position: relative;
+  animation: mymove 1s forwards;
+}
+.ball {
+	position: relative;
+	bottom: 0%;
+	left: -1em;
+	width: 2em;
+	height: 2em;
+	/*border-radius: 50%;*/
+	/*background-color: orange;*/
+/*}
+*/
 
 g {
 	outline-color: solid 10px black;
@@ -84,14 +97,14 @@ g {
 		order: 2;
 	}
 }
-  #triangle1 {
-        width: 1px;
-        height: 1px;
-display: none;
- opacity: 0;
-     transform: rotateX(170deg);
-    border-left: 0px solid transparent;
-    border-right: 170px solid transparent;
-    border-bottom: 58px solid #000000;
-        margin: 10px 0px 00px;
-      }
+/*  #triangle1 {
+      width: 1px;
+      height: 1px;
+      display: none;
+      opacity: 0;
+      transform: rotateX(170deg);
+      border-left: 0px solid transparent;
+      border-right: 170px solid transparent;
+      border-bottom: 58px solid #000000;
+      margin: 10px 0px 00px;
+}*/

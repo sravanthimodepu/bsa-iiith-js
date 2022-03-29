@@ -1,235 +1,216 @@
-// document.getElementById("arrow").addEventListener("load", myFunction);
 
-// function myFunction() {
-//   document.getElementById("arrow").innerHTML = "arrow_down";
-// }
-var id = null;
 
-function setDefaults(){
-	var arrow = document.getElementById("arrow");
-	arrow.style.top='0px';
+    (function(){
+            console.log("printdropdown");
+    generateDropdown();
+    //adjustBeamBreadth();
+    //adjustBeamLength();
 
-}
+    })();
 
-function myFunction() {
-    if (document.getElementById("radio-style_point_load").checked) {
-        var elem = document.getElementById("arrow");
-		var rect = document.getElementById("rectangle");
-		var bbox = rect.getBBox();
-		var y = 135 - (bbox.height - 50)/2
-console.log(elem.style.top,bbox.height,y)
-        var posy = 0;
-        clearInterval(id);
-        id = setInterval(frame, 10);
 
-function animate(){
-anime({
-	  
-  
-      //target
-      targets: "#rectangle",
-      //Properties
-      //rotateY: 360,
-      //scale: 0.5,
-     // translateX: 300,
-     // skew: 30,
-      // Property Parameters
-     // duration: 1000,
-      endDelay: 300,
-      easing: "easeInOutSine",
-      // Animation Parameters
-     // direction: "alternate",
- rotate: [0, 5],
-      duration: 4000,
+    function generateDropdown(){
+        console.log("printdropdown");
+    var dropdown = ['Select', 'Cantilever', 'Fixed Beam', 'One Side Fixed One Side SS', 'Two Side SS ']
+    var select = document.getElementById("dropdown");
+    for (var i = 0; i < dropdown.length; i++) {
+                    var optn = dropdown[i];
+                    var el = document.createElement("option");
+                    el.textContent = optn;
+                    el.value = optn;
+                    select.appendChild(el);
+                }
+        document.getElementById("procedure-message").innerHTML = "Select Boundary Type from the dropdown menu";        
+        }
 
-      loop: false,
-    });
-anime({
-      targets: "#observations_point_load_sfd",
-      width: '100%',
-      endDelay: 300,
-      easing: "easeInOutSine",
-      duration: 4000,
-      loop: false,
-    });
- anime({
-      targets: "#triangle1",
-opacity: 1,
-      duration: 4000,
-      endDelay: 300,
-      easing: "easeInOutSine",
-      loop: false,
- begin: function() {
-    document.querySelector('#triangle1').style.display = 'block';
-  },
-    });
-}
+    function onSelection(){
+        var selectedDropdown = document.getElementById("dropdown");
+        console.log(selectedDropdown);
+        var selectedDropdownval= selectedDropdown.options[selectedDropdown.selectedIndex].text;
+        if(selectedDropdownval === "Cantilever"){ 
+         document.getElementById("procedure-message").innerHTML = "<li>Select Cantilever from the dropdown menu</li>" + "<li>Select point load from load type</li>" + "<li>Click on play button to start the simulation</li>" + "<li>Observe the beam for Deflection</li>" + "<li>Pay attention to the shear force and bending moment in the observation section</li>";
+        }else if(selectedDropdownval === "Fixed Beam") {
+            console.log("balammaboya");
+         document.getElementById("procedure-message").innerHTML = "<li>Select Fixed Beam from the dropdown menu</li>" + "<li>Select point load from load type</li>" + "<li>Click on play button to start the simulation</li>" + "<li>Observe the beam for Deflection</li>" + "<li>Pay attention to the shear force and bending moment in the observation section</li>";
+        }else if(selectedDropdownval === "One Side Fixed One Side SS") {
+            console.log("balammaboya");
+         document.getElementById("procedure-message").innerHTML = "<li>Select One Side Fixed One Side SS from the dropdown menu</li>" + "<li>Select point load from load type</li>" + "<li>Click on play button to start the simulation</li>" + "<li>Observe the beam for Deflection</li>" + "<li>Pay attention to the shear force and bending moment in the observation section</li>";
+        }
+        else if(selectedDropdownval === "Two Side SS") {
+            console.log("balammaboya");
+         document.getElementById("procedure-message").innerHTML = "<li>Select Two Side SS from the dropdown menu</li>" + "<li>Select point load from load type</li>" + "<li>Click on play button to start the simulation</li>" + "<li>Observe the beam for Deflection</li>" + "<li>Pay attention to the shear force and bending moment in the observation section</li>";
+        }
 
-        function frame() {
-            if (posy > y ) { 
-                clearInterval(id);
-setTimeout(animate,800);
+     }   
 
-            } else {
-				posy++;
-                elem.style.top = posy + 'px';
+    function showObservations(ele1, ele2){
+        var path1=document.getElementsByClassName(ele1)[0].getElementsByTagName("path")[0];
+        var path1Val = path1.getAttribute("d")
+        var path2=document.getElementsByClassName(ele2)[0].getElementsByTagName("path")[0];
+        var path2Val = path2.getAttribute("d")
+        animateObserve(ele1, path1Val);
+        console.log(path1Val);
+       // animateObserve(ele2, path2Val);
+        console.log(path2Val);
+    }
+
+    var previousClickedEle = [];
+    // var previousClickedBeam = [];
+
+
+    function play(){
+        moveArrowDown("arrow", 150);
+        const myTimeout = setTimeout(playSimulation, 2000);
+       // setTimeout(playSimulation, 3000);
+       // playSimulation();
+        
+
+    }
+
+    function playSimulation() {  
+    console.log("printplay");
+    var radios = document.getElementsByTagName('input');
+    var value;
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].type === 'radio' && radios[i].checked) {
+            // get value, set checked flag or do whatever you need to
+            value = radios[i].value;     
+            var selectedDropdown = document.getElementById("dropdown");
+                console.log(selectedDropdown);
+
+            var selectedDropdownval= selectedDropdown.options[selectedDropdown.selectedIndex].text;
+            var lengthval = document.getElementById("length").value //gets the oninput value
+            document.getElementById('lenoutput').innerHTML = lengthval //displays this value to the html page
+            console.log(lengthval);
+            var depthval = document.getElementById("depth").value //gets the oninput value
+            document.getElementById('depoutput').innerHTML = depthval //displays this value to the html page
+            console.log(depthval);
+            // if (value === "Point Load" && selectedDropdownval === "Cantilever"){ 
+            //     animateObserve('cls', 'val1', 'val2');
+            // } 
+            if (previousClickedEle.length > 0){
+            for (var i = 0; i < previousClickedEle.length; i++) {
+                console.log("balamma");
+                document.getElementById(previousClickedEle[i]).style.display = "none";
+                }
+            }
+
+            // if (previousClickedBeam.length > 0){
+            // for (var i = 0; i < previousClickedBeam.length; i++) {
+            //     console.log("balamma");
+            //     document.getElementById(previousClickedBeam[i]).style.display = "none";
+            //     document.getElementById(previousClickedMainBeam[i]).style.display = "block";
+            //     }
+            // }
+           
+            if (value === "Point Load" && selectedDropdownval === "Cantilever"){ 
+                console.log("test");
+                previousClickedEle.push("set1");
+                document.getElementById("set1").style.display="block";
+                //document.getElementById("procedure-message").innerHTML = "Select Cantilever from the dropdown menu";
+                document.getElementById("mes1").innerHTML = "message1";
+                // animateBeam("#main-beam", "#canti-beam-pl");
+                // previousClickedBeam.push("beam1");
+                // document.getElementById("beam1").style.display="block";
+                console.log("beam1");
+                //showObservations('svg-sfd','svg-bmd');
+                animateObserve('.canti-pl-sfd path','M 100 300 L 350 300 L 350 350 L 100 350 L 100 300');
+                animateObserve('.canti-pl-bmd path','M 100 300 L 450 300 L 100 400 L 100 300 L 100 300');
+                
+            } 
+            if (value === "UDL" && selectedDropdownval === "Cantilever"){ 
+                previousClickedEle.push("set2");
+                document.getElementById("set2").style.display="block";
+                document.getElementById("mes2").innerHTML = "message2";
+                console.log("balamma");
+                // animateBeam("#main-beam", "#canti-beam-udl");
+                // previousClickedBeam.push("beam2");
+                // document.getElementById("beam2").style.display="block";
+                animateObserve('.canti-udl-sfd path','M 100 300 L 450 300 L 100 400 L 100 300 L 100 300');
+                animateObserve('.canti-udl-bmd path','M 100 300 Q 250 300 500 300 C 350 300 150 350 100 400 Q 100 400 100 300');
+            } 
+            if (value === "Point Load" && selectedDropdownval === "Fixed Beam")
+            {
+                previousClickedEle.push("set3");
+                document.getElementById("set3").style.display="block";
+                document.getElementById("mes3").innerHTML = "message3";
+                // animateBeam("#main-beam", "#fixed-beam-pl");
+                // previousClickedBeam.push("beam3");
+                // document.getElementById("beam3").style.display="block";
+                animateObserve('.fix-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
+                animateObserve('.fix-pl-sfd path','M 150 150 L 450 150 L 450 250 L 150 250 L 150 150 L 150 250 L 300 50 L 450 250');
+            } 
+            if (value === "UDL" && selectedDropdownval === "Fixed Beam")
+            {
+                previousClickedEle.push("set4");
+                document.getElementById("set4").style.display="block";
+                document.getElementById("mes4").innerHTML = "message4";
+                // animateBeam("#main-beam", "#fixed-beam-udl");
+                // previousClickedBeam.push("beam4");
+                // document.getElementById("beam4").style.display="block";
+                animateObserve('.fix-udl-sfd path','M 150 150 L 450 150 L 450 250 L 150 50 L 150 150');
+                animateObserve('.fix-udl-bmd path','M 150 200 L 450 200 L 450 250 L 150 250 L 150 200 L 150 250 Q 300 0 450 250');
+
+             } 
+            if (value === "Point Load" && selectedDropdownval === "One Side Fixed One Side SS")
+            {
+                previousClickedEle.push("set5");
+                document.getElementById("set5").style.display="block";            
+                document.getElementById("mes5").innerHTML = "message5";
+                // animateBeam("#main-beam", "#oness-beam-pl");
+                // previousClickedBeam.push("beam5");
+                // document.getElementById("beam5").style.display="block";
+                animateObserve('.oness-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
+                animateObserve('.oness-pl-bmd path','M 100 200 L 100 200 L 400 200 L 400 250 L 300 150 L 100 200');
+            } 
+            if (value === "UDL" && selectedDropdownval === "One Side Fixed One Side SS")
+            {
+                previousClickedEle.push("set6");
+                document.getElementById("set6").style.display="block";            
+                document.getElementById("mes6").innerHTML = "message6";
+                // animateBeam("#main-beam", "#oness-beam-udl");
+                // previousClickedBeam.push("beam6");
+                // document.getElementById("beam6").style.display="block";
+                animateObserve('.oness-udl-sfd path','M 100 200 L 100 200 L 500 200 L 450 300 L 100 150 Q 100 200 100 200');
+                animateObserve('.oness-udl-bmd path','M 100 200 L 100 200 L 500 200 L 500 250 Q 250 50 100 200');
+            } 
+            if (value === "Point Load" && selectedDropdownval === "Two Side SS")
+            {
+                previousClickedEle.push("set7");
+                document.getElementById("set7").style.display="block";            
+                document.getElementById("mes7").innerHTML = "message7";
+                // animateBeam("#main-beam", "#twoss-beam-pl");
+                // previousClickedBeam.push("beam7");
+                // document.getElementById("beam7").style.display="block";
+                animateObserve('.twoss-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
+                animateObserve('.twoss-pl-bmd path','M 100 300 L 300 300 L 200 250 L 100 300');
+            } 
+            if (value === "UDL" && selectedDropdownval === "Two Side SS")
+            {
+                 previousClickedEle.push("set8");
+                document.getElementById("set8").style.display="block";           
+                document.getElementById("mes8").innerHTML = "message8";
+                // animateBeam("#main-beam", "#twoss-beam-udl");
+                // previousClickedBeam.push("beam8");
+                // document.getElementById("beam8").style.display="block";
+                animateObserve('.twoss-udl-sfd path','M 150 150 L 450 150 L 450 250 L 150 50 L 150 150');
+                animateObserve('.twoss-udl-bmd path','M 100 300 L 400 300 Q 250 150 100 300');
             }
         }
     }
 
-}
-
-function getOption() {
-    selectElement = document.querySelector('#menu');
-    boundaryType = selectElement.value;
-    document.querySelector('.boundaryType').textContent = boundaryType;
-    console.log(boundaryType);
-}
-
-function displayRadioValue() {
-    var ele = document.getElementsByName('answer');
-
-    for (i = 0; i < ele.length; i++) {
-
-        if (ele[i].type = "radio") {
-
-            if (ele[i].checked)
-                document.getElementById("result").innerHTML = ele[i].value;
-        }
-
     }
-}
 
-function adjustRectLength() {
-document.getElementById('triangle1').style.display = 'none'
-anime({
-      targets: "#rectangle",
-	 rotate: [0, 0],
-      duration: 1,
-      loop: false,
-    });
-anime({
-      targets: "#observations_point_load_sfd",
-	 width:0,
-      duration: 1,
-      loop: false,
-    });
-    var rect = document.getElementById("rectangle");
-    var bbox = rect.getBBox();
-    var orginalLen = bbox.width;
-    var len = document.getElementById("sliderWithValueTooltipLength").value;
-    var width = (len * 550) / 100;
-    var diff = width - orginalLen;
-    var pos = 0;
-	var elem = document.getElementById("arrow");
-	var arrowMarginfLeft = parseInt((elem.style.marginLeft).split('px'));
-    clearInterval(id);
-	var left = 315;
-	if(len === 100) left = 540;
-	else if(len === 0) left = 90;
-	else left = 90 + 4.5*len;
-	elem.style.marginLeft =  left + 'px';
-	elem.style.top = '0px';
-    id = setInterval(frame, 10);
-    function frame() {
-        if (pos > Math.abs(diff)) {
-            clearInterval(id);
-			
-        } else {
-            pos++;
-            if (diff < 0) {
-                rect.setAttribute("width", orginalLen - pos);;
-            } else {
-                rect.setAttribute("width", orginalLen + pos);
-            }
-        }
-    }
-	
-}
+    //<button id="test" onclick="animateObserve('svg', '', '', this.id)">Play</button>
 
 
-function adjustRectBreadth() {
-document.getElementById('triangle1').style.display = 'none'
-anime({
-      targets: "#rectangle",
-	 rotate: [0, 0],
-      duration: 1,
-      loop: false,
-    });
-anime({
-      targets: "#observations_point_load_sfd",
-	 width:0,
-      duration: 1,
-      loop: false,
-    });
-	var rect = document.getElementById("rectangle");
-    var bbox = rect.getBBox();
-    var orginalheight = bbox.height;
-	var orginaly = bbox.y;
-    var height = document.getElementById("sliderWithValueTooltipBreadth").value;
-	var y = Math.floor(height/2);
-    var diff = height - orginalheight;
-    var pos = 0, posy = 0;
-	var elem = document.getElementById("arrow");
-    clearInterval(id);
-	var top = 0;
-	elem.style.top = '0px';
-    clearInterval(id);
-    id = setInterval(frame, 10);
-    function frame() {
-        if (pos > Math.abs(diff)) {
-            clearInterval(id);
-        } else {
-            pos++;
-			posy = posy+0.5;
-            if (diff < 0) {
-                rect.setAttribute("height", orginalheight - pos);
-				rect.setAttribute("y", orginaly + posy);
-            } else {
-                rect.setAttribute("height", orginalheight + pos);
-				rect.setAttribute("y", orginaly - posy);
-            }
-        }
-    }
-}
-// slider for Weight of load
-
-document.addEventListener('DOMContentLoaded', function() {	
-	let weight = 600;
-	// slider for weight of load
-	const slider_weight = document.getElementById("weight");
-	const output_weight = document.getElementById("id_weight");
-	output_weight.innerHTML = slider_weight.value; // Display the default slider value
-
-	slider_weight.oninput = function() {
-		output_weight.innerHTML = this.value;
-		updatePara();
-	};
-
-	let myAnimation = anime({
-		rotate: [displacement, -1 * displacement],
-		duration: function(){
-			return time;
-		},
-		easing: 'easeInOutSine',
-		direction: 'alternate',
-		loop: true,
-	});   
-
-	function updatePara()
-	{	
-		weight = document.getElementById("weight").value;		
-		const ball_css = document.querySelector("#arrow");
+    // Note: generate radio button dynamically which are showing on index.html 
+    // experiment logic on main.js
+    // all the common animations on animations.js
+    // utils.js file : if same it's same logic /common/
+    // step1: create all animations in animations.js ----done
+    // step2: skleten structure in main.js /sudo code if it's final add logic - done 
+    // step3: invoke logic and from utils.js if need
 
 
-		ball_css.style.height = weight / 300 + "em" ;
-		ball_css.style.width = weight / 300 + "em" ;
-		ball_css.style.left = weight / (-600) + "em" ;
-
-
-		playButton.addEventListener('click', function() { myAnimation.play(); });
-		pauseButton.addEventListener('click', function() { myAnimation.pause(); });
-		restartButton.addEventListener('click', function() { myAnimation.restart(); });
-	}
-});
 
