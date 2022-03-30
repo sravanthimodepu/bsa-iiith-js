@@ -15,12 +15,20 @@
 
 		<body class="page">
 			<div class="columns is-centered is-flex">
-				<div class="column mt-2 is-8-desktop is-10-tablet is-10-mobile has-text-centered">
+				<div class="column mt-2 is-10-desktop is-10-tablet is-10-mobile has-text-centered">
 					<div class="v-instruction-container">
 						<div class="v-instruction-title">Instructions</div>
 						<div id="procedure-message" class="v-instruction-text" style="  text-align: left;">		       
 						</div>					
-					</div><br> 
+					</div> 
+
+	<div class="column center-content">
+
+						<div class="select" >
+							<select id="dropdown" onchange="onSelection()"></select>
+						</div>
+						<p><span class="boundaryType"></span></p>
+						</div>
 				
 	 					<div class="columns is-mobile is-centered is-flex">
 	 						<div id="anime-demo" class="column has-text-centered controls">
@@ -36,18 +44,10 @@
 
 			
 			<div class="columns is-centered is-variable is-flex is-flex-wrap-wrap workspace">
-				<div id="apparatus" class="column has-text-centered is-3-desktop is-5-tablet is-5-mobile apparatus">
+				<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
 					<div class="v-datalist-container">
 						
-			  <div class="v-datalist-title" id="load"> Boundary Type</div>	
-
-	<div class="column center-content">
-
-						<div class="select" >
-							<select id="dropdown" onchange="onSelection()"></select>
-						</div>
-						<p><span class="boundaryType"></span></p>
-						</div>
+			
 
 	  <div class="v-datalist-title" id="load"> Load Type</div>	
 	            <label class="v-radio v-datalist-row" id="radio-style">
@@ -55,9 +55,8 @@
 	            <label class="v-radio v-datalist-row" id="radio-style">
 	            	<input type="radio" class="v-radio-input" name="answer" value="UDL">Uniform Distributed </label>
           <!-- <div id="result">Result : </div> -->
-	            	<p class="v-datalist-title">Input Parameters</p>
-	            	<div class="columns is-mobile is-pulled-left" align="left">
-	        				<div class="column" id="slider-left" >
+
+	            	<div class="v-datalist-title">Input Parameters</div>
 
 
           				<!-- <input id="sliderWithValueTooltipLength" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range" onchange="adjustRectLength()"> -->
@@ -67,15 +66,14 @@
 	 					<p id="depth" type="range" min="50" max="100" step="10"  value="50" onchange="adjustRectBreadth()">
 	 							<output id="depoutput"></output> 
 	 					</p> -->
-          					
-
-
-	        					<input id="length" type="range" min="50" max="100" step="10"  value="50" onchange="adjustRectLength()">
-	 							<output id="lenoutput"></output>
+          				
+	 						<label class="v-checkbox v-datalist-row" id="radio-style"> 
+	        					<input id="length" type="checkbox" class="v-checkbox-input" step="10"  value="50" >Length(mts): 50</label> 
+	 							<output id="lenoutput"></output> 
 
 	 					<!-- <input id="sliderWithValueTooltipBreadth" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range" onchange="adjustRectBreadth()"> -->
-
-	 							<input id="depth" type="range" min="50" max="100" step="10"  value="50" onchange="adjustRectBreadth()">
+	 					<label class="v-checkbox v-datalist-row" id="radio-style"> 
+	 							<input id="depth" type="checkbox" class="v-checkbox-input"  step="10"  value="50" >Depth(mm): 50</label>
 	 							<output id="depoutput"></output> 
 
 
@@ -93,14 +91,14 @@
 								<p>Load: (KN)  <span id="id_mass"></span></p>
 								<input type="range" min="100" max="1000" value="500" class="slider" id="mass">
 							</div> -->
-	        				</div>
-	      				</div>
+	        				
+	      			
 	      					
 					</div>
 
 				</div>
 
-				<div id="observations" class="column has-text-centered is-3-desktop is-5-tablet is-5-mobile observations">
+				<div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile observations">
 					<div class="v-datalist-container">
 						<div class="v-datalist-title">Observations</div>
 
@@ -110,7 +108,7 @@
 								<div style="height:50">
 									<svg class="canti-pl-sfd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="35 215 400 150">
 										<path d="M 100 300 L 350 300 L 350 350 L 100 350 L 100 300" style="stroke:black;fill:none;stroke-width:5px;" />
-										<p id="mes1"  class="" style="width: 100%;"></p>
+										<b><p id="mes1"  class="" style="width: 100%; font-size:14px;"></p></b>
 									</svg>
 									<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p> 
 
@@ -241,8 +239,9 @@
 					<!-- <canvas id="main" class="v-canvas-container"></canvas> -->
 					<!-- <div></div> -->
 				
-
-   		  	
+					<div class="columns">
+  <div class="column">
+   		 
 					<div id ="arrow" class="arrow">
 						<svg version="1.1" id="Capa_1" >
 								<g>
@@ -253,38 +252,51 @@
 							</svg>
 					</div>
 
-	<div class="column">
+	<div class="column" >
 
-		<svg class="" width="484" height="168" viewBox="26 100 584 168"  stroke="black"  xmlns="http://www.w3.org/2000/svg">
-							<!--main beam for all boundary types-->
-			<path id="main-beam" class="st1" d="M 50 150 L 200 150 L 400 150 L 550 150 L 550 200 L 400 200 L 200 200 L 50 200 L 50 150 "/>
-		</svg>	
-			</div>				
+		<svg class="" width="484" height="168" viewBox="26 137 584 168"  stroke="#BA8C63" fill="#BA8C63"  xmlns="http://www.w3.org/2000/svg">
+			<path id="canti-pl-main-beam" class="st1" d="M 700 200 L 550 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 550 250 L 700 250 L 700 200 "/> 			
+		</svg>
+		<!-- <svg class="" width="484" height="168" viewBox="26 137 584 168"  stroke="#BA8C63" fill="#BA8C63"  xmlns="http://www.w3.org/2000/svg">
+			<path id="canti-udl-main-beam" class="st1" d="M 700 200 L 550 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 550 250 L 700 250 L 700 200 "/> 			
+		</svg> -->
+		<!-- <svg class="" width="484" height="168" viewBox="26 137 584 168"  stroke="#BA8C63" fill="#BA8C63"  xmlns="http://www.w3.org/2000/svg">
+			<path id="canti-udl-bmd-main-beam" class="st1" d="M 700 200 L 550 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 550 250 L 700 250 L 700 200 "/> 			
+		</svg> -->
 
- 
-  
-  <!-- cantiliver point load and UDL starts here-->
+		<!-- <svg class="" width="484" height="168" viewBox="26 137 584 168"  stroke="#BA8C63" fill="#BA8C63"  xmlns="http://www.w3.org/2000/svg">
+			<path id="circle" class="st1" d="M 500 200 L 300 200 L 100 200 L 50 200 L 50 50 L 0 50 L 0 400 L 50 400 L 50 250 L 100 250 L 300 250 L 500 250 L 700 250 L 750 250 L 750 400 L 800 400 L 800 50 L 750 50 L 750 200 L 700 200 L 500 200 "/>
+		</svg> -->
+	</div>				
+   <!-- cantiliver point load and UDL starts here-->
 						<div id="beam1" style="display: none;">
 						 	<svg>
-						 		<path id="canti-beam-pl" class="st1" d="M 50 200 L 300 200 L 450 200 C 450 200 600 200 750 250 L 750 300 C 600 250 450 250 450 250 L 300 250 L 50 250 L 50 200 " />	
+						 		<!-- <path id="canti-beam-pl" class="st1" d="M 50 200 L 300 200 L 450 200 C 450 200 600 200 750 250 L 750 300 C 600 250 450 250 450 250 L 300 250 L 50 250 L 50 200 " />	 -->
+						 		<path id="canti-beam-pl"  class="st1" d="M 700 250 C 550 200 450 200 450 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 450 250 C 450 250 550 250 700 300 L 700 250 " />
 						 	</svg>
-						 </div>
+						</div>
 						 <div id="beam2" style="display: none;">	
-							 <svg>					
+						 	<svg>
+						 	 <path id="canti-beam-udl" class="st1" d="M 700 300 C 500 200 350 200 300 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 300 250 C 300 250 500 250 700 350 L 700 300 " />
+						 	</svg>
+							 <!-- <svg>					
 								<path id="canti-beam-udl" class="st1" d="M 50 200 C 100 200 200 200 300 300 C 350 350 450 350 500 300 C 600 200 700 200 750 200 L 750 250 C 700 250 600 250 500 350 C 450 400 350 400 300 350 C 200 250 100 250 50 250 L 50 200 " />
-							</svg>
+							</svg> -->
 						</div>
 						<!-- cantiliver point load and UDL ends here-->
 						
 							<!-- Fixed Beam point load and UDL starts here-->
 						<div id="beam3" style="display: none;">
 							<svg>
-							 	<path id="fixed-beam-pl" class="st1" d="M 50 200 C 100 200 150 200 250 250 C 350 300 450 300 550 250 C 650 200 700 200 750 200 L 750 250 C 700 250 650 250 550 300 C 450 350 350 350 250 300 C 150 250 100 250 50 250 L 50 200 " />
+							 	<!-- <path id="fixed-beam-pl" class="st1" d="M 50 200 C 100 200 150 200 250 250 C 350 300 450 300 550 250 C 650 200 700 200 750 200 L 750 250 C 700 250 650 250 550 300 C 450 350 350 350 250 300 C 150 250 100 250 50 250 L 50 200 " /> -->
+
+ <path id="fixed-beam-pl" class="st1" d="M 550 250 C 450 300 400 300 300 250 C 200 200 150 200 150 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 150 250 C 150 250 200 250 300 300 C 400 350 450 350 550 300 C 650 250 700 250 700 250 L 750 250 L 750 400 L 800 400 L 800 50 L 750 50 L 750 200 L 700 200 C 700 200 650 200 550 250 " />
 							</svg>
 						</div>
 						<div id="beam4" style="display: none;">
 							<svg>
-								<path id="fixed-beam-udl" class="st1" d="M 50 200 C 100 200 200 200 300 300 C 350 350 450 350 500 300 C 600 200 700 200 750 200 L 750 250 C 700 250 600 250 500 350 C 450 400 350 400 300 350 C 200 250 100 250 50 250 L 50 200 " /> 
+								<!-- <path id="fixed-beam-udl" class="st1" d="M 50 200 C 100 200 200 200 300 300 C 350 350 450 350 500 300 C 600 200 700 200 750 200 L 750 250 C 700 250 600 250 500 350 C 450 400 350 400 300 350 C 200 250 100 250 50 250 L 50 200 " />  -->
+								<path id="fixed-beam-udl" class="st1" d="M 500 300 C 400 350 400 350 300 300 C 150 200 100 200 100 200 L 50 200 L 50 50 L 0 50 L 0 400 L 50 400 L 50 250 L 100 250 C 100 250 150 250 300 350 C 400 400 400 400 500 350 C 650 250 700 250 700 250 L 750 250 L 750 400 L 800 400 L 800 50 L 750 50 L 750 200 L 700 200 C 700 200 650 200 500 300 " />
 							 </svg>
 						</div>
 							<!-- Fixed Beam point load and UDL ends here-->
@@ -315,9 +327,15 @@
  						</div>
 							<!-- Two Side SS point load and UDL ends here-->
 
+  </div>
+  
+  <!-- <div class="column">
+  	<p><b>Deflection of Beam</b></p>
+  
+					</div>
 					
-					
-
+    
+  </div> -->
 </div>
 
 

@@ -11,7 +11,7 @@
 
     function generateDropdown(){
         console.log("printdropdown");
-    var dropdown = ['Select', 'Cantilever', 'Fixed Beam', 'One Side Fixed One Side SS', 'Two Side SS ']
+    var dropdown = ['Select Boundary Type', 'Cantilever', 'Fixed Beam', 'One Side Fixed One Side SS', 'Two Side SS ']
     var select = document.getElementById("dropdown");
     for (var i = 0; i < dropdown.length; i++) {
                     var optn = dropdown[i];
@@ -28,17 +28,17 @@
         console.log(selectedDropdown);
         var selectedDropdownval= selectedDropdown.options[selectedDropdown.selectedIndex].text;
         if(selectedDropdownval === "Cantilever"){ 
-         document.getElementById("procedure-message").innerHTML = "<li>Select Cantilever from the dropdown menu</li>" + "<li>Select point load from load type</li>" + "<li>Click on play button to start the simulation</li>" + "<li>Observe the beam for Deflection</li>" + "<li>Pay attention to the shear force and bending moment in the observation section</li>";
+         document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
         }else if(selectedDropdownval === "Fixed Beam") {
             console.log("balammaboya");
-         document.getElementById("procedure-message").innerHTML = "<li>Select Fixed Beam from the dropdown menu</li>" + "<li>Select point load from load type</li>" + "<li>Click on play button to start the simulation</li>" + "<li>Observe the beam for Deflection</li>" + "<li>Pay attention to the shear force and bending moment in the observation section</li>";
+         document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
         }else if(selectedDropdownval === "One Side Fixed One Side SS") {
             console.log("balammaboya");
-         document.getElementById("procedure-message").innerHTML = "<li>Select One Side Fixed One Side SS from the dropdown menu</li>" + "<li>Select point load from load type</li>" + "<li>Click on play button to start the simulation</li>" + "<li>Observe the beam for Deflection</li>" + "<li>Pay attention to the shear force and bending moment in the observation section</li>";
+         document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
         }
         else if(selectedDropdownval === "Two Side SS") {
             console.log("balammaboya");
-         document.getElementById("procedure-message").innerHTML = "<li>Select Two Side SS from the dropdown menu</li>" + "<li>Select point load from load type</li>" + "<li>Click on play button to start the simulation</li>" + "<li>Observe the beam for Deflection</li>" + "<li>Pay attention to the shear force and bending moment in the observation section</li>";
+         document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
         }
 
      }   
@@ -56,6 +56,7 @@
 
     var previousClickedEle = [];
     var previousClickedBeam = [];
+    // var previousClickedMainBeam = [];
 
 
     function play(){
@@ -66,9 +67,6 @@
         
 
     }
-
-
-
 
     function playSimulation() {  
     console.log("printplay");
@@ -83,10 +81,10 @@
 
             var selectedDropdownval= selectedDropdown.options[selectedDropdown.selectedIndex].text;
             var lengthval = document.getElementById("length").value //gets the oninput value
-            document.getElementById('lenoutput').innerHTML = lengthval //displays this value to the html page
+            //document.getElementById('lenoutput').innerHTML = lengthval //displays this value to the html page
             console.log(lengthval);
             var depthval = document.getElementById("depth").value //gets the oninput value
-            document.getElementById('depoutput').innerHTML = depthval //displays this value to the html page
+           // document.getElementById('depoutput').innerHTML = depthval //displays this value to the html page
             console.log(depthval);
             // if (value === "Point Load" && selectedDropdownval === "Cantilever"){ 
             //     animateObserve('cls', 'val1', 'val2');
@@ -105,17 +103,26 @@
                 document.getElementById(previousClickedMainBeam[i]).style.display = "block";
                 }
             }
-           
+            // if (previousClickedMainBeam.length > 0){
+            // for (var i = 0; i < previousClickedMainBeam.length; i++) {
+            //     console.log("balamma");
+            //     document.getElementById(previousClickedMainBeam[i]).style.display = "none";
+            //     document.getElementById(previousClickedMainBeam[i]).style.display = "block";
+            //     }
+            // }
             if (value === "Point Load" && selectedDropdownval === "Cantilever"){ 
                 console.log("test");
                 previousClickedEle.push("set1");
                 document.getElementById("set1").style.display="block";
                 //document.getElementById("procedure-message").innerHTML = "Select Cantilever from the dropdown menu";
-                document.getElementById("mes1").innerHTML = "message1";
-                animateBeam("#main-beam", "#canti-beam-pl");
+                document.getElementById("mes1").innerHTML = "Maximum shear force is constant throughout the beam";
+                animateBeam("#canti-pl-main-beam", "#canti-beam-pl");
                 previousClickedBeam.push("beam1");
-                document.getElementById("beam1").style.display="block";
+                document.getElementById("beam1").style.display="none";
                 console.log("beam1");
+                // previousClickedMainBeam.push("canti-pl-main-beam");
+                // document.getElementById("canti-pl-main-beam").style.display="block";
+
                 //showObservations('svg-sfd','svg-bmd');
                 animateObserve('.canti-pl-sfd path','M 100 300 L 350 300 L 350 350 L 100 350 L 100 300');
                 animateObserve('.canti-pl-bmd path','M 100 300 L 450 300 L 100 400 L 100 300 L 100 300');
@@ -124,11 +131,13 @@
             if (value === "UDL" && selectedDropdownval === "Cantilever"){ 
                 previousClickedEle.push("set2");
                 document.getElementById("set2").style.display="block";
-                document.getElementById("mes2").innerHTML = "message2";
+                document.getElementById("mes2").innerHTML = "Maximum bending movement occurs at the fixed end";
                 console.log("balamma");
-                animateBeam("#main-beam", "#canti-beam-udl");
+                animateBeam("#canti-pl-main-beam", "#canti-beam-udl");
                 previousClickedBeam.push("beam2");
-                document.getElementById("beam2").style.display="block";
+                document.getElementById("beam2").style.display="none";
+                // previousClickedMainBeam.push("canti-udl-main-beam");
+                // document.getElementById("canti-pl-main-beam").style.display="block";
                 animateObserve('.canti-udl-sfd path','M 100 300 L 450 300 L 100 400 L 100 300 L 100 300');
                 animateObserve('.canti-udl-bmd path','M 100 300 Q 250 300 500 300 C 350 300 150 350 100 400 Q 100 400 100 300');
             } 
@@ -139,7 +148,7 @@
                 document.getElementById("mes3").innerHTML = "message3";
                 animateBeam("#main-beam", "#fixed-beam-pl");
                 previousClickedBeam.push("beam3");
-                document.getElementById("beam3").style.display="block";
+                document.getElementById("beam3").style.display="none";
                 animateObserve('.fix-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
                 animateObserve('.fix-pl-sfd path','M 150 150 L 450 150 L 450 250 L 150 250 L 150 150 L 150 250 L 300 50 L 450 250');
             } 
@@ -150,7 +159,7 @@
                 document.getElementById("mes4").innerHTML = "message4";
                 animateBeam("#main-beam", "#fixed-beam-udl");
                 previousClickedBeam.push("beam4");
-                document.getElementById("beam4").style.display="block";
+                document.getElementById("beam4").style.display="none";
                 animateObserve('.fix-udl-sfd path','M 150 150 L 450 150 L 450 250 L 150 50 L 150 150');
                 animateObserve('.fix-udl-bmd path','M 150 200 L 450 200 L 450 250 L 150 250 L 150 200 L 150 250 Q 300 0 450 250');
 
@@ -162,7 +171,7 @@
                 document.getElementById("mes5").innerHTML = "message5";
                 animateBeam("#main-beam", "#oness-beam-pl");
                 previousClickedBeam.push("beam5");
-                document.getElementById("beam5").style.display="block";
+                document.getElementById("beam5").style.display="none";
                 animateObserve('.oness-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
                 animateObserve('.oness-pl-bmd path','M 100 200 L 100 200 L 400 200 L 400 250 L 300 150 L 100 200');
             } 
@@ -173,7 +182,7 @@
                 document.getElementById("mes6").innerHTML = "message6";
                 animateBeam("#main-beam", "#oness-beam-udl");
                 previousClickedBeam.push("beam6");
-                document.getElementById("beam6").style.display="block";
+                document.getElementById("beam6").style.display="none";
                 animateObserve('.oness-udl-sfd path','M 100 200 L 100 200 L 500 200 L 450 300 L 100 150 Q 100 200 100 200');
                 animateObserve('.oness-udl-bmd path','M 100 200 L 100 200 L 500 200 L 500 250 Q 250 50 100 200');
             } 
@@ -184,7 +193,7 @@
                 document.getElementById("mes7").innerHTML = "message7";
                 animateBeam("#main-beam", "#twoss-beam-pl");
                 previousClickedBeam.push("beam7");
-                document.getElementById("beam7").style.display="block";
+                document.getElementById("beam7").style.display="none";
                 animateObserve('.twoss-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
                 animateObserve('.twoss-pl-bmd path','M 100 300 L 300 300 L 200 250 L 100 300');
             } 
@@ -195,7 +204,7 @@
                 document.getElementById("mes8").innerHTML = "message8";
                 animateBeam("#main-beam", "#twoss-beam-udl");
                 previousClickedBeam.push("beam8");
-                document.getElementById("beam8").style.display="block";
+                document.getElementById("beam8").style.display="none";
                 animateObserve('.twoss-udl-sfd path','M 150 150 L 450 150 L 450 250 L 150 50 L 150 150');
                 animateObserve('.twoss-udl-bmd path','M 100 300 L 400 300 Q 250 150 100 300');
             }

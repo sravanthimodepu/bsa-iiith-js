@@ -1,8 +1,8 @@
-.page {
+/*.page {
 	
-	/*overflow-y: hidden;
-overflow-x:scroll;*/
-}
+	overflow-y: hidden;
+overflow-x: hidden;
+}*/
 .vr{
   width:3px;
   display:table-cell;
@@ -40,8 +40,9 @@ svg {
 	max-width: 100%;
 }
 
+
 #arrow {
-	margin-left: 500px;
+	margin-left: 530px;
 	margin-top: 0px;
   width: 100px;
   height: 100px;
