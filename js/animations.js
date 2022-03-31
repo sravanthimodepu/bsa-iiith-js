@@ -93,7 +93,7 @@ function adjustRectLength() {
   else left = 90 + 4.5*len;
   elem.style.marginLeft =  left + 'px';
   elem.style.top = '0px';
-    id = setInterval(frame, 10);
+    id = setInterval(frame,10);
     function frame() {
         if (pos > Math.abs(diff)) {
             clearInterval(id);

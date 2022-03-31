@@ -41,14 +41,14 @@ svg {
 }
 
 
-#arrow {
-	margin-left: 530px;
-	margin-top: 0px;
+ #arrow { 
+	/* margin-left: 530px;
+	margin-top: 0px; 
   width: 100px;
-  height: 100px;
+  height: 100px;*/
   position: relative;
-  animation: mymove 2s forwards;
-}
+  animation: mymove 10s forwards;
+} 
 
 /*#ball {
 	margin-left: 315px;
