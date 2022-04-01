@@ -1,0 +1,359 @@
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.6-b/css/style.min.css">
+			<link rel="stylesheet" href="css/main.css">
+			<script type="text/javascript" src="js/bulma-slider.min.js"></script>
+	 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+	 		<style>
+
+	 		</style>
+
+		</head>
+
+		<body class="page">
+			<div class="columns is-centered is-flex">
+				<div class="column mt-2 is-10-desktop is-10-tablet is-10-mobile has-text-centered">
+					<div class="v-instruction-container">
+						<div class="v-instruction-title">Instructions</div>
+						<div id="procedure-message" class="v-instruction-text" style="  text-align: left;">		       
+						</div>					
+					</div> 
+
+	<div class="column center-content">
+
+						<div class="select" >
+							<select id="dropdown" onchange="onSelection()"></select>
+						</div>
+						<p><span class="boundaryType"></span></p>
+						</div>
+				
+	 					<div class="columns is-mobile is-centered is-flex">
+	 						<div id="anime-demo" class="column has-text-centered controls">
+								<button id="play" class="v-button" onclick="play()">Start</button>
+								<!--<button id="pause" class="v-button">Pause</button>-->
+								<button src="./index.html" id="restart" class="v-button">Restart</button>
+
+							</div> 
+						</div>
+
+					</div>
+			</div>
+
+			
+			<div class="columns is-centered is-variable is-flex is-flex-wrap-wrap workspace">
+				<div id="apparatus" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile apparatus">
+					<div class="v-datalist-container">
+						
+			
+
+	  <div class="v-datalist-title" id="load"> Load Type</div>	
+	            <label class="v-radio v-datalist-row" id="radio-style">
+	            	<input type="radio" class="v-radio-input" name="answer" value="Point Load"	 id="plbtn" >Point</label>
+	            <label class="v-radio v-datalist-row" id="radio-style">
+	            	<input type="radio" class="v-radio-input" name="answer" value="UDL">Uniform Distributed </label>
+          <!-- <div id="result">Result : </div> -->
+
+	            	<div class="v-datalist-title">Input Parameters</div>
+
+
+          				<!-- <input id="sliderWithValueTooltipLength" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range" onchange="adjustRectLength()"> -->
+          				<!-- <p id="length" type="range" min="50" max="100" step="10"  value="50" onchange="adjustRectLength()">
+	 							<output id="lenoutput"></output>
+	 					</p>
+	 					<p id="depth" type="range" min="50" max="100" step="10"  value="50" onchange="adjustRectBreadth()">
+	 							<output id="depoutput"></output> 
+	 					</p> -->
+          				
+	 						<label class="v-checkbox v-datalist-row" id="radio-style"> 
+	        					<input id="length" type="checkbox" class="v-checkbox-input" step="10"  value="50" >Length(mts): 50</label> 
+	 							<output id="lenoutput"></output> 
+
+	 					<!-- <input id="sliderWithValueTooltipBreadth" class="slider has-output-tooltip is-success is-circle " min="0" max="100" value="50" type="range" onchange="adjustRectBreadth()"> -->
+	 					<label class="v-checkbox v-datalist-row" id="radio-style"> 
+	 							<input id="depth" type="checkbox" class="v-checkbox-input"  step="10"  value="50" >Depth(mm): 50</label>
+	 							<output id="depoutput"></output> 
+
+
+	          			<!--	<p id="length">Length(mts): <output for="sliderWithValueTooltipLength">50</output></p>
+	          				<input id="sliderWithValueTooltipLength" class="slider has-output-tooltip is-success is-circle " min="10" max="100" value="50" type="range" onchange="adjustRectLength()">
+	          				<script>
+	              		bulmaSlider.attach();
+	          				</script>
+	          				<p id="depth">Depth(mm): <output for="sliderWithValueTooltipBreadth">50</output></p>
+	          				<input id="sliderWithValueTooltipBreadth" class="slider has-output-tooltip is-success is-circle " min="25" max="100" value="50" type="range" onchange="adjustRectBreadth()">
+	          				<script>
+	              		bulmaSlider.attach();
+	          				</script>-->
+	          				<!-- <div class="slidecontainer">
+								<p>Load: (KN)  <span id="id_mass"></span></p>
+								<input type="range" min="100" max="1000" value="500" class="slider" id="mass">
+							</div> -->
+	        				
+	      			
+	      					
+					</div>
+
+				</div>
+
+				<div id="observations" class="column has-text-centered is-2-desktop is-5-tablet is-5-mobile observations">
+					<div class="v-datalist-container">
+						<div class="v-datalist-title">Observations</div>
+
+								<!---cantiliver starts-->
+							<div id="set1"  class="" style="width: 100%; display: none;" >
+								<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+								<div style="height:50">
+									<svg class="canti-pl-sfd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="35 215 400 150">
+										<path d="M 100 300 L 350 300 L 350 350 L 100 350 L 100 300" style="stroke:black;fill:none;stroke-width:5px;" />
+										<b><p id="mes1"  class="" style="width: 100%; font-size:14px;"></p></b>
+									</svg>
+									<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p> 
+
+									<svg class="canti-pl-bmd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="25 215 500 250">
+										<path d="M 100 300 L 450 300 L 100 400 L 100 300 L 100 300" style="stroke:black; fill:none;stroke-width:5px;" />
+										<p id="mes2"  class="" style="width: 100%;"></p>
+									</svg>
+								</div>
+								
+							</div>	
+							<div id="set2" class="" style="width: 100%; display: none;">
+							<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+
+								<div style="height:50">
+									<svg class="canti-udl-sfd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="35 215 400 150">
+										<path d="M 100 300 L 450 300 L 100 400 L 100 300 L 100 300" style="stroke:black;fill:none;stroke-width:5px;" />
+										<p id="mes3"  class="" style="width: 100%;"></p>
+									</svg>
+									<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+									<svg class="canti-udl-bmd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="25 215 500 250">
+										<path d="M 100 300 Q 250 300 500 300 C 350 300 150 350 100 400 Q 100 400 100 300" style="stroke:black; fill:none;stroke-width:5px;" />
+										<p id="mes4"  class="" style="width: 100%;"></p>
+									</svg>
+								</div>
+
+							</div>
+							<!---fixed beam observations starts-->
+							<div id="set3"  class="" style="width: 100%; display: none;" >
+								<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+								<div style="height:50">
+									<svg class="fix-pl-sfd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="2 196 508 5">
+										<path d="M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150" style="stroke:black;fill:none;stroke-width:5px;" />
+										<p id="mes5"  class="" style="width: 100%;"></p>
+									</svg>
+									<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p> 
+
+									<svg class="fix-pl-bmd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="2 184 533 2">
+										<path d="M 150 150 L 450 150 L 450 250 L 150 250 L 150 150 L 150 250 L 300 50 L 450 250" style="stroke:black; fill:none;stroke-width:5px;" />
+										<p id="mes6"  class="" style="width: 100%;"></p>
+									</svg>
+								</div>
+								
+							</div>	
+							<div id="set4" class="" style="width: 100%; display: none;">
+							<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+
+								<div style="height:50">
+									<svg class="fix-udl-sfd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="1 145 504 1">
+										<path d="M 150 150 L 450 150 L 450 250 L 150 50 L 150 150" style="stroke:black;fill:none;stroke-width:5px;" />
+										<p id="mes7"  class="" style="width: 100%;"></p>
+									</svg>
+									<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+									<svg class="fix-udl-bmd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="5 215 500 2">
+										<path d="M 150 200 L 450 200 L 450 250 L 150 250 L 150 200 L 150 250 Q 300 0 450 250" style="stroke:black; fill:none;stroke-width:5px;" />
+										<p id="mes8"  class="" style="width: 100%;"></p>
+									</svg>
+								</div>
+
+							</div>
+							<!-- fixed beam observations ends-->
+
+							<!-- one side ss observations starts here-->
+							<div id="set5"  class="" style="width: 100%; display: none;" >
+								<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+								<div style="height:50">
+									<svg class="oness-pl-sfd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="3 138 512 5">
+										<path d="M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150" style="stroke:black;fill:none;stroke-width:5px;" />
+									</svg>
+									<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p> 
+
+									<svg class="oness-pl-bmd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="0 215 500 90">
+										<path d="M 100 200 L 100 200 L 400 200 L 400 250 L 300 150 L 100 200" style="stroke:black; fill:none;stroke-width:5px;" />
+									</svg>
+								</div>
+								
+							</div>	
+							<div id="set6" class="" style="width: 100%; display: none;">
+							<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+
+								<div style="height:50">
+								<svg class="oness-udl-sfd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="5 152 500 5">
+									<path d="M 100 200 L 100 200 L 500 200 L 450 300 L 100 150 Q 100 200 100 200" style="stroke:black;fill:none;stroke-width:5px;" />
+								</svg>
+									<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+									<svg class="oness-udl-bmd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="2 215 500 5">
+										<path d="M 100 200 L 100 200 L 500 200 L 500 250 Q 250 50 100 200" style="stroke:black; fill:none;stroke-width:5px;" />
+									</svg>
+								</div>
+
+							</div>
+							<!-- one side ss observaitons ends here-->
+
+							<!-- two side ss observations starts here-->
+							<div id="set7"  class="" style="width: 100%; display: none;" >
+								<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+								<div style="height:50">
+									<svg class="twoss-pl-sfd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="111 215 400 1">
+										<path d="M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150" style="stroke:black;fill:none;stroke-width:5px;" />
+									</svg>
+									<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p> 
+
+									<svg class="twoss-pl-bmd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="25 215 500 250">
+										<path d="M 100 300 L 300 300 L 200 250 L 100 300" style="stroke:black; fill:none;stroke-width:5px;" />
+									</svg>
+								</div>
+								
+							</div>	
+							<div id="set8" class="" style="width: 100%; display: none;">
+							<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Shear Force </p> 
+
+								<div style="height:50">
+								<svg class="twoss-udl-sfd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="110 124 400 65">
+									<path d="M 150 150 L 450 150 L 450 250 L 150 50 L 150 150" style="stroke:black;fill:none;stroke-width:5px;" />
+								</svg>
+									<p style="float: left; margin-left: 20px; margin-top: 20px; font-weight: 700;">Bending Movement </p>
+									<svg class="twoss-udl-bmd" xmlns="http://www.w3.org/2000/svg" width="150px" height="90px" viewBox="25 215 500 250">
+										<path d="M 100 300 L 400 300 Q 250 150 100 300" style="stroke:black; fill:none;stroke-width:5px;" />
+									</svg>
+								</div>
+
+							</div>
+							<!-- two side ss observaitons ends here-->
+
+					</div>
+				</div>
+
+				<div class="column has-text-centered is-6-desktop is-10-tablet is-10-mobile simulation v-canvas-container" id="container">
+					<!-- <canvas id="main" class="v-canvas-container"></canvas> -->
+					<!-- <div></div> -->
+				
+					<div class="columns">
+  <div class="column">
+   		 
+					<div id ="arrow" class="arrow">
+						<svg version="1.1" id="Capa_1" >
+								<g>
+									<g id="arrow_down">
+										<path style="fill:#030104;" d="M32,16.016l-5.672-5.664c0,0-3.18,3.18-6.312,6.312V0h-8.023v16.664l-6.32-6.32L0,16.016L16,32 L32,16.016z"/>
+									</g>
+								</g>
+							</svg>
+					</div>
+
+	<div class="column" >
+
+		<svg class="" width="484" height="168" viewBox="26 137 584 168"  stroke="#BA8C63" fill="#BA8C63"  xmlns="http://www.w3.org/2000/svg">
+			<path id="canti-pl-main-beam" class="st1" d="M 700 200 L 550 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 550 250 L 700 250 L 700 200 "/> 			
+		</svg>
+		<!-- <svg class="" width="484" height="168" viewBox="26 137 584 168"  stroke="#BA8C63" fill="#BA8C63"  xmlns="http://www.w3.org/2000/svg">
+			<path id="canti-udl-main-beam" class="st1" d="M 700 200 L 550 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 550 250 L 700 250 L 700 200 "/> 			
+		</svg> -->
+		<!-- <svg class="" width="484" height="168" viewBox="26 137 584 168"  stroke="#BA8C63" fill="#BA8C63"  xmlns="http://www.w3.org/2000/svg">
+			<path id="canti-udl-bmd-main-beam" class="st1" d="M 700 200 L 550 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 550 250 L 700 250 L 700 200 "/> 			
+		</svg> -->
+
+		<!-- <svg class="" width="484" height="168" viewBox="26 137 584 168"  stroke="#BA8C63" fill="#BA8C63"  xmlns="http://www.w3.org/2000/svg">
+			<path id="circle" class="st1" d="M 500 200 L 300 200 L 100 200 L 50 200 L 50 50 L 0 50 L 0 400 L 50 400 L 50 250 L 100 250 L 300 250 L 500 250 L 700 250 L 750 250 L 750 400 L 800 400 L 800 50 L 750 50 L 750 200 L 700 200 L 500 200 "/>
+		</svg> -->
+	</div>				
+   <!-- cantiliver point load and UDL starts here-->
+						<div id="beam1" style="display: none;">
+						 	<svg>
+						 		<!-- <path id="canti-beam-pl" class="st1" d="M 50 200 L 300 200 L 450 200 C 450 200 600 200 750 250 L 750 300 C 600 250 450 250 450 250 L 300 250 L 50 250 L 50 200 " />	 -->
+						 		<path id="canti-beam-pl"  class="st1" d="M 700 250 C 550 200 450 200 450 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 450 250 C 450 250 550 250 700 300 L 700 250 " />
+						 	</svg>
+						</div>
+						 <div id="beam2" style="display: none;">	
+						 	<svg>
+						 	 <path id="canti-beam-udl" class="st1" d="M 700 300 C 500 200 350 200 300 200 L 200 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 200 250 L 300 250 C 300 250 500 250 700 350 L 700 300 " />
+						 	</svg>
+							 <!-- <svg>					
+								<path id="canti-beam-udl" class="st1" d="M 50 200 C 100 200 200 200 300 300 C 350 350 450 350 500 300 C 600 200 700 200 750 200 L 750 250 C 700 250 600 250 500 350 C 450 400 350 400 300 350 C 200 250 100 250 50 250 L 50 200 " />
+							</svg> -->
+						</div>
+						<!-- cantiliver point load and UDL ends here-->
+						
+							<!-- Fixed Beam point load and UDL starts here-->
+						<div id="beam3" style="display: none;">
+							<svg>
+							 	<!-- <path id="fixed-beam-pl" class="st1" d="M 50 200 C 100 200 150 200 250 250 C 350 300 450 300 550 250 C 650 200 700 200 750 200 L 750 250 C 700 250 650 250 550 300 C 450 350 350 350 250 300 C 150 250 100 250 50 250 L 50 200 " /> -->
+
+ <path id="fixed-beam-pl" class="st1" d="M 550 250 C 450 300 400 300 300 250 C 200 200 150 200 150 200 L 100 200 L 100 50 L 50 50 L 50 400 L 100 400 L 100 250 L 150 250 C 150 250 200 250 300 300 C 400 350 450 350 550 300 C 650 250 700 250 700 250 L 750 250 L 750 400 L 800 400 L 800 50 L 750 50 L 750 200 L 700 200 C 700 200 650 200 550 250 " />
+							</svg>
+						</div>
+						<div id="beam4" style="display: none;">
+							<svg>
+								<!-- <path id="fixed-beam-udl" class="st1" d="M 50 200 C 100 200 200 200 300 300 C 350 350 450 350 500 300 C 600 200 700 200 750 200 L 750 250 C 700 250 600 250 500 350 C 450 400 350 400 300 350 C 200 250 100 250 50 250 L 50 200 " />  -->
+								<path id="fixed-beam-udl" class="st1" d="M 500 300 C 400 350 400 350 300 300 C 150 200 100 200 100 200 L 50 200 L 50 50 L 0 50 L 0 400 L 50 400 L 50 250 L 100 250 C 100 250 150 250 300 350 C 400 400 400 400 500 350 C 650 250 700 250 700 250 L 750 250 L 750 400 L 800 400 L 800 50 L 750 50 L 750 200 L 700 200 C 700 200 650 200 500 300 " />
+							 </svg>
+						</div>
+							<!-- Fixed Beam point load and UDL ends here-->
+
+							<!-- One Side SS point load and UDL starts here-->
+						<div id="beam5" style="display: none;">
+							<svg>
+								<path id="oness-beam-pl" class="st1" d="M 50 200 L 100 200 L 250 200 C 500 200 600 250 750 200 L 750 250 C 600 300 500 250 250 250 L 100 250 L 50 250 L 50 200  "/>
+							</svg>
+						</div>
+						<div id="beam6" style="display: none;">
+							<svg>
+  								<path id="one-ss-udl" class="st1" d="M 50 200 L 100 200 L 350 200 C 500 200 600 300 750 200 L 750 250 C 600 350 500 250 350 250 C 350 250 350 250 100 250 L 50 250 L 50 200  "/>
+  							</svg>
+  						</div>
+							<!-- One Side SS point load and UDL ends here-->
+
+							<!-- Two Side SS point load and UDL starts here-->
+						<div id="beam7" style="display: none;">
+							<svg>
+							 	<path id="twoss-beam-pl" class="st1" d="M 750 200 L 600 250 C 450 300 350 300 200 250 L 50 200 L 50 250 L 200 300 C 350 350 450 350 600 300 L 750 250 L 750 200 "/>
+							 </svg>
+						</div>
+						<div id="beam8" style="display: none;">
+						<svg>
+ 							 	<path id="twoss-beam-udl" class="st1" d="M 750 200 L 750 200 C 450 250 350 250 50 200 L 50 200 L 50 250 L 50 250 C 350 300 450 300 750 250 L 750 250 L 750 200 "/>
+ 							</svg>
+ 						</div>
+							<!-- Two Side SS point load and UDL ends here-->
+
+  </div>
+  
+  <!-- <div class="column">
+  	<p><b>Deflection of Beam</b></p>
+  
+					</div>
+					
+    
+  </div> -->
+</div>
+
+
+			<!-- <div class="columns is-mobile is-centered is-flex">
+				<div id="anime-demo" class="column has-text-centered controls">
+					<button id="restart" class="v-button">Restart</button>
+				</div>
+			</div> -->
+
+			
+			
+			<script src="https://unpkg.com/mathjs@9.2.0/lib/browser/math.js"></script>
+			<script src='https://cdn.plot.ly/plotly-1.47.4.min.js'></script>
+			<script src="https://cdn.jsdelivr.net/npm/animejs@3.0.1/lib/anime.min.js"></script>
+			<script src="./js/main.js"></script>
+	 		<script src="./js/animations.js"></script>
+	 		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+			<script src="./js/MorphSVGPlugin3.min.js"></script>
+			<script src="./js/data.json"></script>
+		</body>
+	</html>

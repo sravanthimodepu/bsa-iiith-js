@@ -56,7 +56,7 @@
 
     var previousClickedEle = [];
     var previousClickedBeam = [];
-    // var previousClickedMainBeam = [];
+    var previousClickedMainBeam = [];
 
 
     function play(){
@@ -103,13 +103,13 @@
                 document.getElementById(previousClickedMainBeam[i]).style.display = "block";
                 }
             }
-            // if (previousClickedMainBeam.length > 0){
-            // for (var i = 0; i < previousClickedMainBeam.length; i++) {
-            //     console.log("balamma");
-            //     document.getElementById(previousClickedMainBeam[i]).style.display = "none";
-            //     document.getElementById(previousClickedMainBeam[i]).style.display = "block";
-            //     }
-            // }
+            if (previousClickedMainBeam.length > 0){
+            for (var i = 0; i < previousClickedMainBeam.length; i++) {
+                console.log("balamma");
+                document.getElementById(previousClickedMainBeam[i]).style.display = "none";
+                document.getElementById(previousClickedMainBeam[i]).style.display = "block";
+                }
+            }
             if (value === "Point Load" && selectedDropdownval === "Cantilever"){ 
                 console.log("test");
                 previousClickedEle.push("set1");
@@ -120,8 +120,8 @@
                 previousClickedBeam.push("beam1");
                 document.getElementById("beam1").style.display="none";
                 console.log("beam1");
-                // previousClickedMainBeam.push("canti-pl-main-beam");
-                // document.getElementById("canti-pl-main-beam").style.display="block";
+                previousClickedMainBeam.push("main-beam1");
+                document.getElementById("main-beam1").style.display="block";
 
                 //showObservations('svg-sfd','svg-bmd');
                 animateObserve('.canti-pl-sfd path','M 100 300 L 350 300 L 350 350 L 100 350 L 100 300');
@@ -133,11 +133,11 @@
                 document.getElementById("set2").style.display="block";
                 document.getElementById("mes2").innerHTML = "Maximum bending movement occurs at the fixed end";
                 console.log("balamma");
-                animateBeam("#canti-pl-main-beam", "#canti-beam-udl");
+                animateBeam("#canti-udl-main-beam", "#canti-beam-udl");
                 previousClickedBeam.push("beam2");
                 document.getElementById("beam2").style.display="none";
-                // previousClickedMainBeam.push("canti-udl-main-beam");
-                // document.getElementById("canti-pl-main-beam").style.display="block";
+                previousClickedMainBeam.push("main-beam2");
+                document.getElementById("main-beam2").style.display="block";
                 animateObserve('.canti-udl-sfd path','M 100 300 L 450 300 L 100 400 L 100 300 L 100 300');
                 animateObserve('.canti-udl-bmd path','M 100 300 Q 250 300 500 300 C 350 300 150 350 100 400 Q 100 400 100 300');
             } 
@@ -146,9 +146,11 @@
                 previousClickedEle.push("set3");
                 document.getElementById("set3").style.display="block";
                 document.getElementById("mes3").innerHTML = "message3";
-                animateBeam("#main-beam", "#fixed-beam-pl");
+                animateBeam("#fixed-pl-main-beam", "#fixed-beam-pl");
                 previousClickedBeam.push("beam3");
                 document.getElementById("beam3").style.display="none";
+                previousClickedMainBeam.push("main-beam3");
+                document.getElementById("main-beam3").style.display="block";
                 animateObserve('.fix-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
                 animateObserve('.fix-pl-sfd path','M 150 150 L 450 150 L 450 250 L 150 250 L 150 150 L 150 250 L 300 50 L 450 250');
             } 
@@ -157,9 +159,11 @@
                 previousClickedEle.push("set4");
                 document.getElementById("set4").style.display="block";
                 document.getElementById("mes4").innerHTML = "message4";
-                animateBeam("#main-beam", "#fixed-beam-udl");
+                animateBeam("#fixed-udl-main-beam", "#fixed-beam-udl");
                 previousClickedBeam.push("beam4");
                 document.getElementById("beam4").style.display="none";
+                previousClickedMainBeam.push("main-beam4");
+                document.getElementById("main-beam4").style.display="block";
                 animateObserve('.fix-udl-sfd path','M 150 150 L 450 150 L 450 250 L 150 50 L 150 150');
                 animateObserve('.fix-udl-bmd path','M 150 200 L 450 200 L 450 250 L 150 250 L 150 200 L 150 250 Q 300 0 450 250');
 
@@ -169,9 +173,11 @@
                 previousClickedEle.push("set5");
                 document.getElementById("set5").style.display="block";            
                 document.getElementById("mes5").innerHTML = "message5";
-                animateBeam("#main-beam", "#oness-beam-pl");
+                animateBeam("#oness-pl-main-beam", "#oness-beam-pl");
                 previousClickedBeam.push("beam5");
                 document.getElementById("beam5").style.display="none";
+                previousClickedMainBeam.push("main-beam5");
+                document.getElementById("main-beam5").style.display="block";
                 animateObserve('.oness-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
                 animateObserve('.oness-pl-bmd path','M 100 200 L 100 200 L 400 200 L 400 250 L 300 150 L 100 200');
             } 
@@ -180,9 +186,11 @@
                 previousClickedEle.push("set6");
                 document.getElementById("set6").style.display="block";            
                 document.getElementById("mes6").innerHTML = "message6";
-                animateBeam("#main-beam", "#oness-beam-udl");
+                animateBeam("#oness-udl-main-beam", "#oness-beam-udl");
                 previousClickedBeam.push("beam6");
                 document.getElementById("beam6").style.display="none";
+                previousClickedMainBeam.push("main-beam6");
+                document.getElementById("main-beam6").style.display="block";
                 animateObserve('.oness-udl-sfd path','M 100 200 L 100 200 L 500 200 L 450 300 L 100 150 Q 100 200 100 200');
                 animateObserve('.oness-udl-bmd path','M 100 200 L 100 200 L 500 200 L 500 250 Q 250 50 100 200');
             } 
