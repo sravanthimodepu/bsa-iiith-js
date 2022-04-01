@@ -199,9 +199,11 @@
                 previousClickedEle.push("set7");
                 document.getElementById("set7").style.display="block";            
                 document.getElementById("mes7").innerHTML = "message7";
-                animateBeam("#main-beam", "#twoss-beam-pl");
+                animateBeam("#twoss-pl-main-beam", "#twoss-beam-pl");
                 previousClickedBeam.push("beam7");
                 document.getElementById("beam7").style.display="none";
+                previousClickedMainBeam.push("main-beam7");
+                document.getElementById("main-beam7").style.display="block";
                 animateObserve('.twoss-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
                 animateObserve('.twoss-pl-bmd path','M 100 300 L 300 300 L 200 250 L 100 300');
             } 
@@ -210,9 +212,11 @@
                  previousClickedEle.push("set8");
                 document.getElementById("set8").style.display="block";           
                 document.getElementById("mes8").innerHTML = "message8";
-                animateBeam("#main-beam", "#twoss-beam-udl");
+                animateBeam("#twoss-udl-main-beam", "#twoss-beam-udl");
                 previousClickedBeam.push("beam8");
                 document.getElementById("beam8").style.display="none";
+                previousClickedMainBeam.push("main-beam8");
+                document.getElementById("main-beam8").style.display="block";
                 animateObserve('.twoss-udl-sfd path','M 150 150 L 450 150 L 450 250 L 150 50 L 150 150');
                 animateObserve('.twoss-udl-bmd path','M 100 300 L 400 300 Q 250 150 100 300');
             }
