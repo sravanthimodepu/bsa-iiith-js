@@ -87,7 +87,7 @@ function adjustRectLength() {
   var elem = document.getElementById("arrow");
   var arrowMarginfLeft = parseInt((elem.style.marginLeft).split('px'));
     clearInterval(id);
-  var left = 315;
+  var left = 215;
   if(len === 100) left = 540;
   else if(len === 0) left = 90;
   else left = 90 + 4.5*len;

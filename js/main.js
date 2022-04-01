@@ -152,7 +152,7 @@
                 previousClickedMainBeam.push("main-beam3");
                 document.getElementById("main-beam3").style.display="block";
                 animateObserve('.fix-pl-sfd path','M 150 150 L 450 150 L 450 200 L 300 200 L 300 100 L 150 100 L 150 150');
-                animateObserve('.fix-pl-sfd path','M 150 150 L 450 150 L 450 250 L 150 250 L 150 150 L 150 250 L 300 50 L 450 250');
+                animateObserve('.fix-pl-bmd path','M 150 150 L 450 150 L 450 250 L 150 250 L 150 150 L 150 250 L 300 50 L 450 250');
             } 
             if (value === "UDL" && selectedDropdownval === "Fixed Beam")
             {
