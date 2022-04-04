@@ -8,7 +8,7 @@
 
     })();
 
-
+// this function generate the dropdown
     function generateDropdown(){
         console.log("printdropdown");
     var dropdown = ['Select Boundary Type', 'Cantilever', 'Fixed Beam', 'One Side Fixed One Side SS', 'Two Side SS ']
@@ -32,39 +32,21 @@
              //    document.getElementById("main-beam1").style.display="block";   
 
         }else if(selectedDropdownval === "Fixed Beam") {
-            console.log("balammaboya");
+            console.log("testboya");
          document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
         }else if(selectedDropdownval === "One Side Fixed One Side SS") {
-            console.log("balammaboya");
+            console.log("testboya");
          document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
         }
         else if(selectedDropdownval === "Two Side SS") {
-            console.log("balammaboya");
+            console.log("testboya");
          document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
         }
 
      }   
 
 
-
-     // function beamDisplay(){
-     //    var displayBeam;
-     //    if(displayBeam === "Cantilever"){ 
-     //    document.getElementById("main-beam1").style.display="block";   
-     //    }else if(displayBeam === "Fixed Beam") {
-     //    document.getElementById("main-beam2").style.display="block";   
-
-     //    }else if(displayBeam === "One Side Fixed One Side SS") {
-     //    document.getElementById("main-beam3").style.display="block";   
-
-     //    }
-     //    else if(displayBeam === "Two Side SS") {
-     //    document.getElementById("main-beam4").style.display="block";   
-
-     //    }
-
-     // }   
-
+//this function shows the animations in the observations section 
     function showObservations(ele1, ele2){
         var path1=document.getElementsByClassName(ele1)[0].getElementsByTagName("path")[0];
         var path1Val = path1.getAttribute("d")
@@ -102,37 +84,35 @@
                 console.log(selectedDropdown);
 
             var selectedDropdownval= selectedDropdown.options[selectedDropdown.selectedIndex].text;
-            var lengthval = document.getElementById("length").value //gets the oninput value
-            //document.getElementById('lenoutput').innerHTML = lengthval //displays this value to the html page
+            var lengthval = document.getElementById("length").value 
             console.log(lengthval);
-            var depthval = document.getElementById("depth").value //gets the oninput value
-           // document.getElementById('depoutput').innerHTML = depthval //displays this value to the html page
+            var depthval = document.getElementById("depth").value 
             console.log(depthval);
             // if (value === "Point Load" && selectedDropdownval === "Cantilever"){ 
             //     animateObserve('cls', 'val1', 'val2');
             // } 
             if (previousClickedEle.length > 0){
             for (var i = 0; i < previousClickedEle.length; i++) {
-                console.log("balamma");
+                console.log("test");
                 document.getElementById(previousClickedEle[i]).style.display = "none";
                 }
             }
 
             if (previousClickedBeam.length > 0){
             for (var i = 0; i < previousClickedBeam.length; i++) {
-                console.log("balamma");
+                console.log("test");
                 document.getElementById(previousClickedBeam[i]).style.display = "none";
                 }
             }
             if (previousClickedMainBeam.length > 0){
             for (var i = 0; i < previousClickedMainBeam.length; i++) {
-                console.log("balamma");
+                console.log("test");
                 document.getElementById(previousClickedMainBeam[i]).style.display = "none";
                 }
             }
             if (mainBeamDisplay.length > 0){
             for (var i = 0; i < mainBeamDisplay.length; i++) {
-                console.log("balamma");
+                console.log("test");
                 document.getElementById(mainBeamDisplay[i]).style.display = "none";
                 }
             }
@@ -165,7 +145,7 @@
                 document.getElementById("set2").style.display="block";
                 document.getElementById("mes3").innerHTML = "Maximum bending movement occurs at the fixed end";
                 document.getElementById("mes4").innerHTML = "hello";
-                // console.log("balamma");
+                // console.log("test");
                 animateBeam("#canti-udl-main-beam", "#canti-beam-udl");
                 previousClickedBeam.push("beam2");
                 document.getElementById("beam2").style.display="none";
@@ -264,16 +244,4 @@
 
     }
 
-    //<button id="test" onclick="animateObserve('svg', '', '', this.id)">Play</button>
-
-
-    // Note: generate radio button dynamically which are showing on index.html 
-    // experiment logic on main.js
-    // all the common animations on animations.js
-    // utils.js file : if same it's same logic /common/
-    // step1: create all animations in animations.js ----done
-    // step2: skleten structure in main.js /sudo code if it's final add logic - done 
-    // step3: invoke logic and from utils.js if need
-
-
-
+    
