@@ -123,8 +123,8 @@
                 document.getElementById("set1").style.display="block";
                 //document.getElementById("procedure-message").innerHTML = "Select Cantilever from the dropdown menu";
                 document.getElementById("mes1").innerHTML = "Maximum shear force is constant throughout the beam";
-                document.getElementById("mes2").innerHTML = "hello";
-                animateBeam("#canti-pl-main-beam", "#canti-beam-pl");
+                document.getElementById("mes2").innerHTML = "text message";
+                cantiPlBeam("#canti-pl-main-beam", "#canti-beam-pl");
                 previousClickedBeam.push("beam1");
                 document.getElementById("beam1").style.display="none";
                 // console.log("beam1");
@@ -144,9 +144,9 @@
                 previousClickedEle.push("set2");
                 document.getElementById("set2").style.display="block";
                 document.getElementById("mes3").innerHTML = "Maximum bending movement occurs at the fixed end";
-                document.getElementById("mes4").innerHTML = "hello";
+                document.getElementById("mes4").innerHTML = "text message bm";
                 // console.log("test");
-                animateBeam("#canti-udl-main-beam", "#canti-beam-udl");
+                cantiUdlBeam("#canti-udl-main-beam", "#canti-beam-udl");
                 previousClickedBeam.push("beam2");
                 document.getElementById("beam2").style.display="none";
                 previousClickedMainBeam.push("main-beam2");
@@ -158,9 +158,9 @@
             {
                 previousClickedEle.push("set3");
                 document.getElementById("set3").style.display="block";
-                document.getElementById("mes5").innerHTML = "message3";
-                document.getElementById("mes6").innerHTML = "hello";
-                animateBeam("#fixed-pl-main-beam", "#fixed-beam-pl");
+                document.getElementById("mes5").innerHTML = "text message of sf";
+                document.getElementById("mes6").innerHTML = "text message of bm";
+                fixedPlBeam("#fixed-pl-main-beam", "#fixed-beam-pl");
                 previousClickedBeam.push("beam3");
                 document.getElementById("beam3").style.display="none";
                 previousClickedMainBeam.push("main-beam3");
@@ -172,9 +172,9 @@
             {
                 previousClickedEle.push("set4");
                 document.getElementById("set4").style.display="block";
-                document.getElementById("mes7").innerHTML = "message4";
-                document.getElementById("mes8").innerHTML = "hello";
-                animateBeam("#fixed-udl-main-beam", "#fixed-beam-udl");
+                document.getElementById("mes7").innerHTML = "text message of sf";
+                document.getElementById("mes8").innerHTML = "text message of bm";
+                fixedUdlBeam("#fixed-udl-main-beam", "#fixed-beam-udl");
                 previousClickedBeam.push("beam4");
                 document.getElementById("beam4").style.display="none";
                 previousClickedMainBeam.push("main-beam4");
@@ -187,9 +187,9 @@
             {
                 previousClickedEle.push("set5");
                 document.getElementById("set5").style.display="block";            
-                document.getElementById("mes9").innerHTML = "message5";
-                document.getElementById("mes10").innerHTML = "hello";
-                animateBeam("#oness-pl-main-beam", "#oness-beam-pl");
+                document.getElementById("mes9").innerHTML = "text message of sf";
+                document.getElementById("mes10").innerHTML = "text message of bm";
+                onessPlBeam("#oness-pl-main-beam", "#oness-beam-pl");
                 previousClickedBeam.push("beam5");
                 document.getElementById("beam5").style.display="none";
                 previousClickedMainBeam.push("main-beam5");
@@ -201,9 +201,9 @@
             {
                 previousClickedEle.push("set6");
                 document.getElementById("set6").style.display="block";            
-                document.getElementById("mes11").innerHTML = "message6";
-                document.getElementById("mes12").innerHTML = "hello";
-                animateBeam("#oness-udl-main-beam", "#oness-beam-udl");
+                document.getElementById("mes11").innerHTML = "text message of sf";
+                document.getElementById("mes12").innerHTML = "text message of bm";
+                onessUdlBeam("#oness-udl-main-beam", "#oness-beam-udl");
                 previousClickedBeam.push("beam6");
                 document.getElementById("beam6").style.display="none";
                 previousClickedMainBeam.push("main-beam6");
@@ -215,9 +215,9 @@
             {
                 previousClickedEle.push("set7");
                 document.getElementById("set7").style.display="block";            
-                document.getElementById("mes13").innerHTML = "message7";
-                document.getElementById("mes14").innerHTML = "hello";
-                animateBeam("#twoss-pl-main-beam", "#twoss-beam-pl");
+                document.getElementById("mes13").innerHTML = "text message of sf";
+                document.getElementById("mes14").innerHTML = "text message of bm";
+                twossPlBeam("#twoss-pl-main-beam", "#twoss-beam-pl");
                 previousClickedBeam.push("beam7");
                 document.getElementById("beam7").style.display="none";
                 previousClickedMainBeam.push("main-beam7");
@@ -229,9 +229,9 @@
             {
                  previousClickedEle.push("set8");
                 document.getElementById("set8").style.display="block";           
-                document.getElementById("mes15").innerHTML = "message8";
-                document.getElementById("mes16").innerHTML = "hello";
-                animateBeam("#twoss-udl-main-beam", "#twoss-beam-udl");
+                document.getElementById("mes15").innerHTML = "text message of sf";
+                document.getElementById("mes16").innerHTML = "text message of bm";
+                twossUdlBeam("#twoss-udl-main-beam", "#twoss-beam-udl");
                 previousClickedBeam.push("beam8");
                 document.getElementById("beam8").style.display="none";
                 previousClickedMainBeam.push("main-beam8");
