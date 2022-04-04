@@ -28,7 +28,9 @@
         console.log(selectedDropdown);
         var selectedDropdownval= selectedDropdown.options[selectedDropdown.selectedIndex].text;
         if(selectedDropdownval === "Cantilever"){ 
-         document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
+        document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
+             //    document.getElementById("main-beam1").style.display="block";   
+
         }else if(selectedDropdownval === "Fixed Beam") {
             console.log("balammaboya");
          document.getElementById("procedure-message").innerHTML = "<li>Select the load type, check the input parameters and click on Start button</li>" + "<li>Observe the beam of Deflection and pay attention to the shear force and bending moment in the observation section </li>";
@@ -42,6 +44,26 @@
         }
 
      }   
+
+
+
+     // function beamDisplay(){
+     //    var displayBeam;
+     //    if(displayBeam === "Cantilever"){ 
+     //    document.getElementById("main-beam1").style.display="block";   
+     //    }else if(displayBeam === "Fixed Beam") {
+     //    document.getElementById("main-beam2").style.display="block";   
+
+     //    }else if(displayBeam === "One Side Fixed One Side SS") {
+     //    document.getElementById("main-beam3").style.display="block";   
+
+     //    }
+     //    else if(displayBeam === "Two Side SS") {
+     //    document.getElementById("main-beam4").style.display="block";   
+
+     //    }
+
+     // }   
 
     function showObservations(ele1, ele2){
         var path1=document.getElementsByClassName(ele1)[0].getElementsByTagName("path")[0];
@@ -57,7 +79,7 @@
     var previousClickedEle = [];
     var previousClickedBeam = [];
     var previousClickedMainBeam = [];
-
+    var mainBeamDisplay = [];
 
     function play(){
         moveArrowDown("arrow", 150);
@@ -100,18 +122,23 @@
             for (var i = 0; i < previousClickedBeam.length; i++) {
                 console.log("balamma");
                 document.getElementById(previousClickedBeam[i]).style.display = "none";
-                document.getElementById(previousClickedMainBeam[i]).style.display = "block";
                 }
             }
             if (previousClickedMainBeam.length > 0){
             for (var i = 0; i < previousClickedMainBeam.length; i++) {
                 console.log("balamma");
                 document.getElementById(previousClickedMainBeam[i]).style.display = "none";
-                document.getElementById(previousClickedMainBeam[i]).style.display = "block";
+                }
+            }
+            if (mainBeamDisplay.length > 0){
+            for (var i = 0; i < mainBeamDisplay.length; i++) {
+                console.log("balamma");
+                document.getElementById(mainBeamDisplay[i]).style.display = "none";
                 }
             }
             if (value === "Point Load" && selectedDropdownval === "Cantilever"){ 
                 console.log("test");
+                
                 previousClickedEle.push("set1");
                 document.getElementById("set1").style.display="block";
                 //document.getElementById("procedure-message").innerHTML = "Select Cantilever from the dropdown menu";
@@ -123,6 +150,10 @@
                 // console.log("beam1");
                 previousClickedMainBeam.push("main-beam1");
                 document.getElementById("main-beam1").style.display="block";
+
+                 mainBeamDisplay.push("main-beam1");
+                document.getElementById("main-beam1").style.display="block";
+
 
                 //showObservations('svg-sfd','svg-bmd');
                 animateObserve('.canti-pl-sfd path','M 100 300 L 350 300 L 350 350 L 100 350 L 100 300');
